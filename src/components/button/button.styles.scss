@@ -16,4 +16,8 @@
     user-select: none;
     transition-duration: 0.4s;
   }
+
+  &:active {
+    scale: 95%;
+  }
 }
