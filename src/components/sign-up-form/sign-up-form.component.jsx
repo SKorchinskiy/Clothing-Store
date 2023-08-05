@@ -4,6 +4,9 @@ import { useState } from "react";
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 
+import { signUpUserByEmail } from "../../configs/firebase.config";
+import { useNavigate } from "react-router-dom";
+
 const defaultFormInput = {
   name: "",
   email: "",
@@ -12,6 +15,8 @@ const defaultFormInput = {
 };
 
 function SignUpForm() {
+  const navigate = useNavigate();
+
   const [formInput, setFormInput] = useState(defaultFormInput);
 
   const onFormInputChange = (event) => {
@@ -19,8 +24,14 @@ function SignUpForm() {
     setFormInput({ ...formInput, [name]: value });
   };
 
-  const onFormSubmit = (event) => {
+  const onFormSubmit = async (event) => {
     event.preventDefault();
+    const { name, email, password, confirmPassword } = formInput;
+    if (password !== confirmPassword) {
+      return alert(`Confirmation password doesn't match the original one!`);
+    }
+    await signUpUserByEmail({ name, email, password });
+    navigate("/home");
   };
 
   return (
@@ -62,7 +73,7 @@ function SignUpForm() {
           placeholder="confirm a password"
           onChange={onFormInputChange}
         />
-        <Button value="Sign Up" />
+        <Button type="submit" value="Sign Up" additionalClasses="default-btn" />
       </form>
     </div>
   );
