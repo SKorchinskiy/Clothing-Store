@@ -1,8 +1,12 @@
 import "./button.styles.scss";
 
-function Button({ value, type }) {
+function Button({ value, type, additionalClasses = "", onClick }) {
   return (
-    <button type={type} className="button-container">
+    <button
+      type={type}
+      className={`btn-container ${additionalClasses}`}
+      onClick={onClick}
+    >
       {value}
     </button>
   );

@@ -4,17 +4,35 @@ import { useState } from "react";
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 
+import {
+  auth,
+  signInUserByEmail,
+  signInUserWithGoogle,
+} from "../../configs/firebase.config";
+import { useNavigate } from "react-router-dom";
+
 const defaultFormInput = {
   email: "",
   password: "",
 };
 
 function SignInForm() {
+  const navigate = useNavigate();
+
   const [formInput, setFormInput] = useState(defaultFormInput);
 
-  const onFormSubmit = (event) => {
+  const onFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(event.target);
+    const { email, password } = formInput;
+    await signInUserByEmail(email, password);
+    if (auth.currentUser) {
+      navigate("/home");
+    }
+  };
+
+  const signInWithGoogle = async () => {
+    await signInUserWithGoogle();
+    navigate("/home");
   };
 
   const onFormInputChange = (event) => {
@@ -45,7 +63,19 @@ function SignInForm() {
           placeholder="enter a password"
           onChange={onFormInputChange}
         />
-        <Button type="submit" value="Sign In" />
+        <div className="sign-in-options">
+          <Button
+            type="submit"
+            value="Sign In"
+            additionalClasses="default-btn"
+          />
+          <Button
+            type="button"
+            value="Sign In with Google"
+            additionalClasses="google-btn"
+            onClick={signInWithGoogle}
+          />
+        </div>
       </form>
     </div>
   );
