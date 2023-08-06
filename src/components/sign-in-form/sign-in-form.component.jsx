@@ -53,6 +53,7 @@ function SignInForm() {
           type="email"
           value={formInput.email}
           placeholder="enter an email"
+          required={true}
           onChange={onFormInputChange}
         />
         <FormInput
@@ -61,6 +62,7 @@ function SignInForm() {
           type="password"
           value={formInput.password}
           placeholder="enter a password"
+          required={true}
           onChange={onFormInputChange}
         />
         <div className="sign-in-options">

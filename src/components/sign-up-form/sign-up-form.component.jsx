@@ -47,6 +47,7 @@ function SignUpForm() {
           name="name"
           value={formInput.name}
           placeholder="enter a name"
+          required={true}
           onChange={onFormInputChange}
         />
         <FormInput
@@ -55,6 +56,7 @@ function SignUpForm() {
           name="email"
           value={formInput.email}
           placeholder="enter an email"
+          required={true}
           onChange={onFormInputChange}
         />
         <FormInput
@@ -63,6 +65,7 @@ function SignUpForm() {
           name="password"
           value={formInput.password}
           placeholder="enter a password"
+          required={true}
           onChange={onFormInputChange}
         />
         <FormInput
@@ -71,6 +74,7 @@ function SignUpForm() {
           name="confirmPassword"
           value={formInput.confirmPassword}
           placeholder="confirm a password"
+          required={true}
           onChange={onFormInputChange}
         />
         <Button type="submit" value="Sign Up" additionalClasses="default-btn" />
