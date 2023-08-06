@@ -1,11 +1,21 @@
 import "./header.styles.scss";
 
+import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { ReactComponent as Logo } from "../../assets/crown.svg";
+import { UserContext } from "../../contexts/user.context";
+
+import { signOutUser } from "../../configs/firebase.config";
 
 function Header() {
   const navigate = useNavigate();
+  const { currentUser, setCurrentUser } = useContext(UserContext);
+
+  const signOut = async () => {
+    await signOutUser();
+    setCurrentUser(null);
+  };
 
   return (
     <div className="header-container">
@@ -16,9 +26,19 @@ function Header() {
         <Link to={"/shop"} className="header-container-element">
           Shop
         </Link>
-        <Link to={"/auth"} className="header-container-element">
-          Sign In
-        </Link>
+        {currentUser ? (
+          <Link
+            onClick={signOut}
+            to={"/auth"}
+            className="header-container-element"
+          >
+            Sign Out
+          </Link>
+        ) : (
+          <Link to={"/auth"} className="header-container-element">
+            Sign In
+          </Link>
+        )}
       </div>
     </div>
   );
