@@ -1,10 +1,8 @@
 import "./sign-in-form.styles.scss";
 
-import { useState, useContext } from "react";
+import { useState } from "react";
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
-
-import { UserContext } from "../../contexts/user.context";
 
 import {
   signInUserByEmail,
@@ -19,7 +17,6 @@ const defaultFormInput = {
 
 function SignInForm() {
   const navigate = useNavigate();
-  const { setCurrentUser } = useContext(UserContext);
 
   const [formInput, setFormInput] = useState(defaultFormInput);
 
@@ -28,7 +25,6 @@ function SignInForm() {
     const { email, password } = formInput;
     const user = await signInUserByEmail(email, password);
     if (user) {
-      setCurrentUser(user);
       navigate("/home");
     }
   };
@@ -36,7 +32,6 @@ function SignInForm() {
   const signInWithGoogle = async () => {
     const user = await signInUserWithGoogle();
     if (user) {
-      setCurrentUser(user);
       navigate("/home");
     }
   };

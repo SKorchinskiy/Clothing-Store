@@ -1,10 +1,8 @@
 import "./sign-up-form.styles.scss";
 
-import { useState, useContext } from "react";
+import { useState } from "react";
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
-
-import { UserContext } from "../../contexts/user.context";
 
 import { signUpUserByEmail } from "../../configs/firebase.config";
 import { useNavigate } from "react-router-dom";
@@ -18,7 +16,6 @@ const defaultFormInput = {
 
 function SignUpForm() {
   const navigate = useNavigate();
-  const { setCurrentUser } = useContext(UserContext);
 
   const [formInput, setFormInput] = useState(defaultFormInput);
 
@@ -35,7 +32,6 @@ function SignUpForm() {
     }
     const user = await signUpUserByEmail({ name, email, password });
     if (user) {
-      setCurrentUser(user);
       navigate("/home");
     }
   };
