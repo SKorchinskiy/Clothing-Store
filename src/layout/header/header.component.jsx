@@ -10,11 +10,10 @@ import { signOutUser } from "../../configs/firebase.config";
 
 function Header() {
   const navigate = useNavigate();
-  const { currentUser, setCurrentUser } = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
 
   const signOut = async () => {
     await signOutUser();
-    setCurrentUser(null);
   };
 
   return (
