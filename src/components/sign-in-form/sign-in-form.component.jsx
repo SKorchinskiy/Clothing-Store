@@ -1,11 +1,12 @@
 import "./sign-in-form.styles.scss";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 
+import { UserContext } from "../../contexts/user.context";
+
 import {
-  auth,
   signInUserByEmail,
   signInUserWithGoogle,
 } from "../../configs/firebase.config";
@@ -18,21 +19,26 @@ const defaultFormInput = {
 
 function SignInForm() {
   const navigate = useNavigate();
+  const { setCurrentUser } = useContext(UserContext);
 
   const [formInput, setFormInput] = useState(defaultFormInput);
 
   const onFormSubmit = async (event) => {
     event.preventDefault();
     const { email, password } = formInput;
-    await signInUserByEmail(email, password);
-    if (auth.currentUser) {
+    const user = await signInUserByEmail(email, password);
+    if (user) {
+      setCurrentUser(user);
       navigate("/home");
     }
   };
 
   const signInWithGoogle = async () => {
-    await signInUserWithGoogle();
-    navigate("/home");
+    const user = await signInUserWithGoogle();
+    if (user) {
+      setCurrentUser(user);
+      navigate("/home");
+    }
   };
 
   const onFormInputChange = (event) => {
@@ -53,6 +59,7 @@ function SignInForm() {
           type="email"
           value={formInput.email}
           placeholder="enter an email"
+          required={true}
           onChange={onFormInputChange}
         />
         <FormInput
@@ -61,6 +68,7 @@ function SignInForm() {
           type="password"
           value={formInput.password}
           placeholder="enter a password"
+          required={true}
           onChange={onFormInputChange}
         />
         <div className="sign-in-options">
