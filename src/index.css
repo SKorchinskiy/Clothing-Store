@@ -1,5 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@400;600;700&display=swap");
 
 * {
   margin: 0;
+}
+
+body {
+  padding: 10px 30px;
 }
