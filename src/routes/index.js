@@ -4,6 +4,7 @@ import Layout from "../layout/layout.component";
 
 import Home from "../pages/home/home.component";
 import Auth from "../pages/auth/auth.component";
+import Shop from "../pages/shop/shop.component";
 
 const router = createBrowserRouter([
   {
@@ -11,12 +12,16 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: "/home?",
+        path: "home?",
         element: <Home />,
       },
       {
-        path: "/auth",
+        path: "auth",
         element: <Auth />,
+      },
+      {
+        path: "shop",
+        element: <Shop />,
       },
     ],
   },
