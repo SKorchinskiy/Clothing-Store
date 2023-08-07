@@ -2,19 +2,17 @@
 
 .header-container {
   display: flex;
-  width: 100wh;
+  width: 100%;
   font-family: Comfortaa, serif;
   font-size: large;
 
   .header-container-side {
     width: 50%;
     display: flex;
-    padding: 20px;
+    padding: 20px 0px;
 
     .header-container-element {
       padding: 10px;
-      // box-shadow: 1px 1px 5px;
-      // border: 1px solid black;
       text-decoration: none;
       margin-right: 50px;
       color: black;
