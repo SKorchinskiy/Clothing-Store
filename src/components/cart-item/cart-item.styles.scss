@@ -1,0 +1,36 @@
+.cart-item-container {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 20px;
+  font-family: "Amatic SC";
+  font-size: 24px;
+  letter-spacing: 2px;
+
+  .item-details {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .cart-item-element {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .arrow {
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .remove-btn {
+      cursor: pointer;
+    }
+  }
+
+  img {
+    width: 90px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
