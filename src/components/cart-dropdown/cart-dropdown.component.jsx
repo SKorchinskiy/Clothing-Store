@@ -3,9 +3,14 @@ import "./cart-dropdown.styles.scss";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart.context";
 import Button from "../button/button.component";
+import { useNavigate } from "react-router-dom";
 
 function CartDropdown() {
   const { cart, itemsCount } = useContext(CartContext);
+  const navigate = useNavigate();
+
+  const goToCheckout = () => navigate("/checkout");
+
   return (
     <div className="cart-dropdown-container">
       {itemsCount ? (
@@ -27,6 +32,7 @@ function CartDropdown() {
         type="button"
         value="Go To Checkout"
         additionalClasses="default-btn"
+        onClick={goToCheckout}
       />
     </div>
   );

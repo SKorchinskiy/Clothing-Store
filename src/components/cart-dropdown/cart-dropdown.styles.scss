@@ -28,13 +28,6 @@
     }
   }
 
-  .empty-cart {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 300px;
-  }
-
   button {
     position: sticky;
     bottom: 15px;
@@ -48,4 +41,13 @@
       scale: 0.8;
     }
   }
+}
+
+.empty-cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  font-family: "Amatic SC";
+  font-size: 24px;
 }
