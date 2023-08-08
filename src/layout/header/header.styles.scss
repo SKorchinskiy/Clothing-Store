@@ -6,6 +6,11 @@
   font-family: Comfortaa, serif;
   font-size: large;
 
+  .cart-container {
+    display: flex;
+    width: 20px;
+  }
+
   .header-container-side {
     width: 50%;
     display: flex;
@@ -14,7 +19,8 @@
     .header-container-element {
       padding: 10px;
       text-decoration: none;
-      margin-right: 50px;
+      text-align: center;
+      margin-right: 10px;
       color: black;
       cursor: pointer;
 
