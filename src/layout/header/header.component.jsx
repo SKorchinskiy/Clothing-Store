@@ -4,6 +4,8 @@ import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { ReactComponent as Logo } from "../../assets/crown.svg";
+import CartIcon from "../../components/cart-icon/cart-icon.component";
+
 import { UserContext } from "../../contexts/user.context";
 
 import { signOutUser } from "../../configs/firebase.config";
@@ -38,6 +40,7 @@ function Header() {
             Sign In
           </Link>
         )}
+        <CartIcon />
       </div>
     </div>
   );
