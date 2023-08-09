@@ -1,6 +1,13 @@
 import { initializeApp } from "firebase/app";
 
-import { getFirestore } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDocs,
+  getFirestore,
+  query,
+  writeBatch,
+} from "firebase/firestore";
 
 import {
   getAuth,
@@ -27,6 +34,23 @@ export const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 export const auth = getAuth(app);
+
+export async function addDocumentsToCollection(collectionName, dataToAdd) {
+  const collectionRef = collection(db, collectionName);
+  const batch = writeBatch(db);
+  dataToAdd.forEach((data) => {
+    const documentRef = doc(collectionRef, data.title);
+    batch.set(documentRef, data);
+  });
+  await batch.commit();
+}
+
+export async function getDocumentsFromCollection(collectionName) {
+  const collectionRef = collection(db, collectionName);
+  const q = query(collectionRef);
+  const querySnaphot = await getDocs(q);
+  return querySnaphot.docs.map((doc) => doc.data());
+}
 
 const googleAuth = new GoogleAuthProvider();
 googleAuth.setCustomParameters({

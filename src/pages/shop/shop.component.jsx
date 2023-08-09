@@ -2,18 +2,21 @@ import "./shop.styles.scss";
 
 import { useContext } from "react";
 
-import { ProductContext } from "../../contexts/product.context";
+import { CategoriesContext } from "../../contexts/categories.context";
 
-import ProductItem from "../../components/product-item/product-item.component";
+import CategoryPreview from "../../components/category-preview/category-preview.component";
 
 function Shop() {
-  const { products } = useContext(ProductContext);
+  const { categories } = useContext(CategoriesContext);
 
   return (
-    <div className="products-container">
-      {products.map((product) => (
-        <ProductItem key={product.id} product={product} />
-      ))}
+    <div className="categories-container">
+      {Object.keys(categories).map((categoryName) => {
+        const category = categories[categoryName];
+        return (
+          <CategoryPreview key={category.categoryId} category={category} />
+        );
+      })}
     </div>
   );
 }
