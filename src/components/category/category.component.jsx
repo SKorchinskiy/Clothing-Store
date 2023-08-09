@@ -1,8 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import "./category.styles.scss";
 
 function Category({ category: { title, imageUrl } }) {
+  const navigate = useNavigate();
+
+  const goToCategory = () => navigate(`/category/${title}`);
+
   return (
-    <div className="category-container">
+    <div className="category-container" onClick={goToCategory}>
       <div
         className="background-image"
         style={{
