@@ -40,8 +40,8 @@ export async function addDocumentsToCollection(collectionName, dataToAdd) {
   const collectionRef = collection(db, collectionName);
   const batch = writeBatch(db);
   dataToAdd.forEach((data) => {
-    const documentRef = doc(collectionRef, data.title);
-    batch.set(documentRef, { title: data.title });
+    const documentRef = doc(collectionRef, data.title.toLowerCase());
+    batch.set(documentRef, { title: data.title, categoryId: data.categoryId });
     const itemsCollection = collection(documentRef, "items");
     data.items.forEach((item) => {
       const subDocRef = doc(itemsCollection, item.name);
@@ -57,26 +57,28 @@ export async function getDocumentsFromCollection(collectionName) {
   const querySnaphot = await getDocs(q);
   const categories = querySnaphot.docs.map((doc) => doc.data());
   const categoriesData = categories.map((category) =>
-    getItemsFromCategories(category)
+    getItemsFromCategories(category, 5)
   );
   const categoriesMap = {};
   for await (const {
     category: { title, categoryId },
     items,
   } of categoriesData) {
-    categoriesMap[title] = { categoryId, title, items };
+    categoriesMap[title.toLowerCase()] = { categoryId, title, items };
   }
   return categoriesMap;
 }
 
-export async function getItemsFromCategories(category, max = 5) {
+export async function getItemsFromCategories(category, max) {
   const itemsCollectionRef = collection(
     db,
     "categories",
-    category.title,
+    category.title.toLowerCase(),
     "items"
   );
-  const q = query(itemsCollectionRef, limit(max));
+  const q = max
+    ? query(itemsCollectionRef, limit(max))
+    : query(itemsCollectionRef);
   const querySnaphot = await getDocs(q);
   return { category, items: querySnaphot.docs.map((doc) => doc.data()) };
 }
