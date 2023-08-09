@@ -5,6 +5,7 @@ import {
   doc,
   getDocs,
   getFirestore,
+  limit,
   query,
   writeBatch,
 } from "firebase/firestore";
@@ -40,7 +41,12 @@ export async function addDocumentsToCollection(collectionName, dataToAdd) {
   const batch = writeBatch(db);
   dataToAdd.forEach((data) => {
     const documentRef = doc(collectionRef, data.title);
-    batch.set(documentRef, data);
+    batch.set(documentRef, { title: data.title });
+    const itemsCollection = collection(documentRef, "items");
+    data.items.forEach((item) => {
+      const subDocRef = doc(itemsCollection, item.name);
+      batch.set(subDocRef, item);
+    });
   });
   await batch.commit();
 }
@@ -49,7 +55,30 @@ export async function getDocumentsFromCollection(collectionName) {
   const collectionRef = collection(db, collectionName);
   const q = query(collectionRef);
   const querySnaphot = await getDocs(q);
-  return querySnaphot.docs.map((doc) => doc.data());
+  const categories = querySnaphot.docs.map((doc) => doc.data());
+  const categoriesData = categories.map((category) =>
+    getItemsFromCategories(category)
+  );
+  const categoriesMap = {};
+  for await (const {
+    category: { title, categoryId },
+    items,
+  } of categoriesData) {
+    categoriesMap[title] = { categoryId, title, items };
+  }
+  return categoriesMap;
+}
+
+export async function getItemsFromCategories(category, max = 5) {
+  const itemsCollectionRef = collection(
+    db,
+    "categories",
+    category.title,
+    "items"
+  );
+  const q = query(itemsCollectionRef, limit(max));
+  const querySnaphot = await getDocs(q);
+  return { category, items: querySnaphot.docs.map((doc) => doc.data()) };
 }
 
 const googleAuth = new GoogleAuthProvider();

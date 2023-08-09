@@ -11,12 +11,7 @@ export function CategoriesProvider({ children }) {
 
   useEffect(() => {
     const getCategoriesData = async () => {
-      const categoriesData = await getDocumentsFromCollection("categories");
-      const categoriesMap = {};
-      categoriesData.forEach(
-        ({ categoryId, title, items }) =>
-          (categoriesMap[title] = { categoryId, title, items })
-      );
+      const categoriesMap = await getDocumentsFromCollection("categories");
       setCategories(categoriesMap);
     };
 
