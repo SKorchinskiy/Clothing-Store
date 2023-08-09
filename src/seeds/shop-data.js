@@ -1,5 +1,6 @@
 export const SHOP_DATA = [
   {
+    categoryId: 1,
     title: "Hats",
     items: [
       {
@@ -59,6 +60,7 @@ export const SHOP_DATA = [
     ],
   },
   {
+    categoryId: 2,
     title: "Sneakers",
     items: [
       {
@@ -112,6 +114,7 @@ export const SHOP_DATA = [
     ],
   },
   {
+    categoryId: 3,
     title: "Jackets",
     items: [
       {
@@ -147,6 +150,7 @@ export const SHOP_DATA = [
     ],
   },
   {
+    categoryId: 4,
     title: "Womens",
     items: [
       {
@@ -194,6 +198,7 @@ export const SHOP_DATA = [
     ],
   },
   {
+    categoryId: 5,
     title: "Mens",
     items: [
       {
