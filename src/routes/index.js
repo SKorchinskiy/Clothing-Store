@@ -2,10 +2,12 @@ import { createBrowserRouter } from "react-router-dom";
 
 import Layout from "../layout/layout.component";
 
-import Home from "../pages/home/home.component";
-import Auth from "../pages/auth/auth.component";
-import Shop from "../pages/shop/shop.component";
-import Checkout from "../pages/checkout/checkout.component";
+import Home from "../pages/home/home.page";
+import Auth from "../pages/auth/auth.page";
+import Shop from "../pages/shop/shop.page";
+import Checkout from "../pages/checkout/checkout.page";
+import Category from "../pages/category/category.page";
+import { getItemsFromCategories } from "../configs/firebase.config";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +29,14 @@ const router = createBrowserRouter([
       {
         path: "checkout",
         element: <Checkout />,
+      },
+      {
+        path: "category/:categoryName",
+        loader: async ({ params: { categoryName } }) =>
+          await getItemsFromCategories({
+            title: categoryName,
+          }),
+        element: <Category />,
       },
     ],
   },
