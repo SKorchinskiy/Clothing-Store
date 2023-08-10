@@ -1,7 +1,11 @@
-import "./header.styles.scss";
+import {
+  HeaderContainer,
+  HeaderContainerSide,
+  HeaderContainerElement,
+} from "./header.styles";
 
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import CartIcon from "../../components/cart-icon/cart-icon.component";
@@ -22,31 +26,23 @@ function Header() {
   };
 
   return (
-    <div className="header-container">
-      <div className="header-container-side header-container-left">
+    <HeaderContainer>
+      <HeaderContainerSide $side="left">
         <Logo onClick={() => navigate("/home")} style={{ cursor: "pointer" }} />
-      </div>
-      <div className="header-container-side  header-container-right">
-        <Link to={"/shop"} className="header-container-element">
-          Shop
-        </Link>
+      </HeaderContainerSide>
+      <HeaderContainerSide $side="right">
+        <HeaderContainerElement to={"/shop"}>Shop</HeaderContainerElement>
         {currentUser ? (
-          <Link
-            onClick={signOut}
-            to={"/auth"}
-            className="header-container-element"
-          >
+          <HeaderContainerElement onClick={signOut} to={"/auth"}>
             Sign Out
-          </Link>
+          </HeaderContainerElement>
         ) : (
-          <Link to={"/auth"} className="header-container-element">
-            Sign In
-          </Link>
+          <HeaderContainerElement to={"/auth"}>Sign In</HeaderContainerElement>
         )}
         <CartIcon />
-      </div>
+      </HeaderContainerSide>
       {isCartOpen && <CartDropdown />}
-    </div>
+    </HeaderContainer>
   );
 }
 
