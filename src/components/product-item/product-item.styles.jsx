@@ -1,4 +1,12 @@
-.product-item-container {
+import styled from "styled-components";
+
+export const ProductItemDetails = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+`;
+
+export const ProductItemContainer = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
@@ -19,21 +27,15 @@
     opacity: 0;
   }
 
-  .product-item-details {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-  }
-
   &:hover {
     button {
       opacity: 0.85;
     }
-
     img {
       opacity: 0.8;
     }
+
     scale: 1.01;
     transition-duration: 0.3s;
   }
-}
+`;
