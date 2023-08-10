@@ -1,4 +1,4 @@
-import "./form-input.styles.scss";
+import { Input, FormInputContainer } from "./form-input.styles";
 
 function FormInput({
   label,
@@ -10,9 +10,9 @@ function FormInput({
   onChange,
 }) {
   return (
-    <div className="form-input-container">
+    <FormInputContainer>
       <label>{label}</label>
-      <input
+      <Input
         type={type}
         required={required}
         value={value}
@@ -20,7 +20,7 @@ function FormInput({
         placeholder={placeholder}
         onChange={onChange}
       />
-    </div>
+    </FormInputContainer>
   );
 }
 
