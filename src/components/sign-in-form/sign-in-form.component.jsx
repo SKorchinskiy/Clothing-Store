@@ -1,14 +1,19 @@
-import "./sign-in-form.styles.scss";
-
-import { useState } from "react";
-import FormInput from "../form-input/form-input.component";
-import Button from "../button/button.component";
+import {
+  SignInOptions,
+  SignInFormHeader,
+  SignInFormContainer,
+} from "./sign-in-form.styles";
 
 import {
   signInUserByEmail,
   signInUserWithGoogle,
 } from "../../configs/firebase.config";
+
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import Button from "../button/button.component";
+import FormInput from "../form-input/form-input.component";
 
 const defaultFormInput = {
   email: "",
@@ -42,12 +47,12 @@ function SignInForm() {
   };
 
   return (
-    <div className="sign-in-form-container">
-      <div className="sign-in-form-header">
+    <div>
+      <SignInFormHeader>
         <h3>I already have an account</h3>
         <p>Sign in with your email and password</p>
-      </div>
-      <form className="sign-in-form" onSubmit={onFormSubmit}>
+      </SignInFormHeader>
+      <SignInFormContainer onSubmit={onFormSubmit}>
         <FormInput
           label="email"
           name="email"
@@ -66,7 +71,7 @@ function SignInForm() {
           required={true}
           onChange={onFormInputChange}
         />
-        <div className="sign-in-options">
+        <SignInOptions>
           <Button
             type="submit"
             value="Sign In"
@@ -78,8 +83,8 @@ function SignInForm() {
             additionalClasses="google-btn"
             onClick={signInWithGoogle}
           />
-        </div>
-      </form>
+        </SignInOptions>
+      </SignInFormContainer>
     </div>
   );
 }
