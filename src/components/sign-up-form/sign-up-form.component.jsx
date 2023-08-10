@@ -1,11 +1,12 @@
-import "./sign-up-form.styles.scss";
-
-import { useState } from "react";
-import FormInput from "../form-input/form-input.component";
-import Button from "../button/button.component";
+import { SignUpFormContainer, SignUpFormHeader } from "./sign-up-form.styles";
 
 import { signUpUserByEmail } from "../../configs/firebase.config";
+
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import Button from "../button/button.component";
+import FormInput from "../form-input/form-input.component";
 
 const defaultFormInput = {
   name: "",
@@ -37,12 +38,12 @@ function SignUpForm() {
   };
 
   return (
-    <div className="sign-up-form-container">
-      <div className="sign-up-form-header">
+    <div>
+      <SignUpFormHeader>
         <h3>I don't have an account</h3>
         <p>Sign Up with your email and password</p>
-      </div>
-      <form className="sign-up-form" onSubmit={onFormSubmit}>
+      </SignUpFormHeader>
+      <SignUpFormContainer onSubmit={onFormSubmit}>
         <FormInput
           label="name"
           type="text"
@@ -80,7 +81,7 @@ function SignUpForm() {
           onChange={onFormInputChange}
         />
         <Button type="submit" value="Sign Up" additionalClasses="default-btn" />
-      </form>
+      </SignUpFormContainer>
     </div>
   );
 }

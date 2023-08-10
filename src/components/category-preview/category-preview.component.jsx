@@ -1,8 +1,12 @@
-import "./category-preview.styles.scss";
+import {
+  CategoryPreviewItems,
+  CategoryPreviewContainer,
+} from "./category-preview.styles";
 
 import { Fragment } from "react";
-import ProductItem from "../product-item/product-item.component";
 import { useNavigate } from "react-router-dom";
+
+import ProductItem from "../product-item/product-item.component";
 
 function CategoryPreview({ category }) {
   const { title, items } = category;
@@ -12,16 +16,16 @@ function CategoryPreview({ category }) {
   const goToCategory = () => navigate(`/category/${title.toLowerCase()}`);
 
   return (
-    <div className="category-preview-container">
+    <CategoryPreviewContainer>
       <h2 onClick={goToCategory}>{title}</h2>
-      <div className="category-preview-items">
+      <CategoryPreviewItems>
         {items.map((item) => (
           <Fragment key={item.id}>
             <ProductItem product={item}></ProductItem>
           </Fragment>
         ))}
-      </div>
-    </div>
+      </CategoryPreviewItems>
+    </CategoryPreviewContainer>
   );
 }
 

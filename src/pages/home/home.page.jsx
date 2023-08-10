@@ -30,7 +30,7 @@ const categories = [
 
 function Home() {
   return (
-    <div className="home-page">
+    <div>
       <CategoryList categories={categories} />
     </div>
   );
