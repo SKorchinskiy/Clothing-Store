@@ -1,5 +1,11 @@
+import {
+  CategoryPreviewItems,
+  CategoryPreviewContainer,
+} from "./category.styles";
+
 import { Fragment } from "react";
 import { useLoaderData } from "react-router-dom";
+
 import ProductItem from "../../components/product-item/product-item.component";
 
 function Category() {
@@ -8,16 +14,16 @@ function Category() {
     items,
   } = useLoaderData();
   return (
-    <div className="category-preview-container">
+    <CategoryPreviewContainer>
       <h2>{title}</h2>
-      <div className="category-preview-items">
+      <CategoryPreviewItems>
         {items.map((item) => (
           <Fragment key={item.id}>
             <ProductItem product={item}></ProductItem>
           </Fragment>
         ))}
-      </div>
-    </div>
+      </CategoryPreviewItems>
+    </CategoryPreviewContainer>
   );
 }
 
