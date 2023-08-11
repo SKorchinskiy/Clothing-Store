@@ -1,62 +1,68 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useReducer } from "react";
+
+import { cartReducer, CART_ACTION_TYPES } from "../reducers/cart/cart.reducer";
 
 export const CartContext = createContext({
-  itemsCount: 0,
-  setItemsCount: () => 0,
   cart: [],
-  addItemToCart: () => [],
-  removeItemFromCart: () => [],
+  itemsCount: 0,
+  totalPrice: 0,
   isCartOpen: false,
   setIsCartOpen: () => false,
   clearFromCart: () => [],
-  totalPrice: 0,
-  setTotalPrice: () => 0,
+  addItemToCart: () => [],
+  removeItemFromCart: () => [],
 });
 
-export function CartProvider({ children }) {
-  const [cart, setCart] = useState([]);
-  const [itemsCount, setItemsCount] = useState(0);
-  const [totalPrice, setTotalPrice] = useState(0);
-  const [isCartOpen, setIsCartOpen] = useState(false);
+const INITIAL_CART_STATE = {
+  cart: [],
+  itemsCount: 0,
+  totalPrice: 0,
+  isCartOpen: false,
+};
 
-  useEffect(() => {
-    const newTotalPrice = cart.reduce(
+export function CartProvider({ children }) {
+  const [state, dispatch] = useReducer(cartReducer, INITIAL_CART_STATE);
+
+  const { cart, itemsCount, totalPrice, isCartOpen } = state;
+
+  const updateCart = (updatedCart) => {
+    const updatedTotalPrice = updatedCart.reduce(
       (total, cartItem) => total + cartItem.price * cartItem.quantity,
       0
     );
-    setTotalPrice(newTotalPrice);
-  }, [cart]);
-
-  useEffect(() => {
-    const newItemsCount = cart.reduce(
+    const updatedItemsCount = updatedCart.reduce(
       (total, item) => total + item.quantity,
       0
     );
-    setItemsCount(newItemsCount);
-  }, [cart]);
-
-  const addItemToCart = (item) => {
-    setCart(addToCart(cart, item));
+    dispatch({
+      type: CART_ACTION_TYPES.SET_ITEM,
+      payload: {
+        updatedCart,
+        updatedTotalPrice,
+        updatedItemsCount,
+      },
+    });
   };
 
-  const removeItemFromCart = (item) => {
-    setCart(removeFromCart(cart, item));
+  const toggleCart = (isOpen) => {
+    dispatch({ type: "TOGGLE_CART", payload: isOpen });
   };
 
-  const clearFromCart = (item) => {
-    setCart(clearItemFromCart(cart, item));
-  };
+  const addItemToCart = (item) => updateCart(addToCart(cart, item));
+  const removeItemFromCart = (item) => updateCart(removeFromCart(cart, item));
+  const clearFromCart = (item) => updateCart(clearItemFromCart(cart, item));
+
+  const setIsCartOpen = (isOpen) => toggleCart(isOpen);
 
   const value = {
-    itemsCount,
     cart,
-    addItemToCart,
-    removeItemFromCart,
-    clearFromCart,
+    itemsCount,
+    totalPrice,
     isCartOpen,
     setIsCartOpen,
-    totalPrice,
-    setTotalPrice,
+    addItemToCart,
+    clearFromCart,
+    removeItemFromCart,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
