@@ -1,6 +1,8 @@
 import { createContext, useReducer } from "react";
 
-import { cartReducer, CART_ACTION_TYPES } from "../reducers/cart/cart.reducer";
+import { cartReducer } from "../redux/reducers/cart/cart.reducer";
+
+import { CART_ACTION_TYPES } from "../redux/actions/cart/cart.type";
 
 export const CartContext = createContext({
   cart: [],
