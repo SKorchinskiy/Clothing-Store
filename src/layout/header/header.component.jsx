@@ -4,24 +4,33 @@ import {
   HeaderContainerElement,
 } from "./header.styles";
 
-import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
-
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import CartIcon from "../../components/cart-icon/cart-icon.component";
-
-import { UserContext } from "../../contexts/user.context";
-
-import { signOutUser } from "../../configs/firebase.config";
-
-import { useSelector } from "react-redux";
-import { cartSelector } from "../../redux/selectors/cart.selector";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
+
+import { signOutUser, observeStateChange } from "../../configs/firebase.config";
+
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+import { userSelector } from "../../redux/selectors/user.selector";
+import { cartSelector } from "../../redux/selectors/cart.selector";
+import { setCurrentUserAction } from "../../redux/actions/user/user.action";
 
 function Header() {
   const navigate = useNavigate();
-  const { currentUser } = useContext(UserContext);
+  const dispatch = useDispatch();
+
+  const { currentUser } = useSelector(userSelector);
   const { isCartOpen } = useSelector(cartSelector);
+
+  useEffect(() => {
+    const unsubscribe = observeStateChange((user) => {
+      dispatch(setCurrentUserAction(user));
+    });
+    return unsubscribe;
+  }, [dispatch]);
 
   const signOut = async () => {
     await signOutUser();
