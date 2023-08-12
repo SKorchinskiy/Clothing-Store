@@ -13,13 +13,15 @@ import CartIcon from "../../components/cart-icon/cart-icon.component";
 import { UserContext } from "../../contexts/user.context";
 
 import { signOutUser } from "../../configs/firebase.config";
+
+import { useSelector } from "react-redux";
+import { cartSelector } from "../../redux/selectors/cart.selector";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
-import { CartContext } from "../../contexts/cart.context";
 
 function Header() {
   const navigate = useNavigate();
   const { currentUser } = useContext(UserContext);
-  const { isCartOpen } = useContext(CartContext);
+  const { isCartOpen } = useSelector(cartSelector);
 
   const signOut = async () => {
     await signOutUser();

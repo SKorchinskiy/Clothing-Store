@@ -1,9 +1,13 @@
-export const CART_ACTION_TYPES = {
-  SET_ITEM: "SET_ITEM",
-  TOGGLE_CART: "TOGGLE_CART",
+import { CART_ACTION_TYPES } from "../../actions/cart/cart.type";
+
+const INITIAL_CART_STATE = {
+  cart: [],
+  itemsCount: 0,
+  totalPrice: 0,
+  isCartOpen: false,
 };
 
-export function cartReducer(state, action) {
+export function cartReducer(state = INITIAL_CART_STATE, action) {
   const { type, payload } = action;
 
   switch (type) {
@@ -22,7 +26,7 @@ export function cartReducer(state, action) {
       };
     }
     default: {
-      throw new Error(`Unknown cart action type: ${type}`);
+      return state;
     }
   }
 }
