@@ -1,7 +1,7 @@
 import { CATEGORIES_ACTION_TYPES } from "../../actions/categories/categories.type";
 
 const INITIAL_CATEGORIES_STATE = {
-  categories: {},
+  categories: [],
 };
 
 export function categoriesReducer(state = INITIAL_CATEGORIES_STATE, action) {

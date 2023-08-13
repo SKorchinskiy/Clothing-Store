@@ -1,6 +1,6 @@
 import { createSelector } from "reselect";
 
-export const selectUserSlice = (store) => store.user;
+const selectUserSlice = (store) => store.user;
 
 export const selectCurrentUser = createSelector(
   [selectUserSlice],

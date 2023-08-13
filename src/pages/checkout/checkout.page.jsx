@@ -32,7 +32,7 @@ function Checkout() {
       <CartItemsContainer>
         {itemsCount ? (
           cartItems.map((cartItem) => (
-            <CartItem key={cartItem.key} cartItem={cartItem} />
+            <CartItem key={cartItem.id} cartItem={cartItem} />
           ))
         ) : (
           <EmptyCart>No items were added to cart!</EmptyCart>
