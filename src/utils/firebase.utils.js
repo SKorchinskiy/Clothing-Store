@@ -39,7 +39,6 @@ export async function getAllCategoriesProducts(limit) {
     getProductsFromCategory(title, { limit })
   );
   const data = await Promise.all(categoriesDataPromises);
-  console.log(data);
   return data;
 }
 
