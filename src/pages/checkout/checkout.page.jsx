@@ -7,11 +7,18 @@ import {
 } from "./checkout.styles";
 
 import CartItem from "../../components/cart-item/cart-item.component";
+
 import { useSelector } from "react-redux";
-import { cartSelector } from "../../redux/selectors/cart.selector";
+import {
+  selectCartItems,
+  selectCartItemsCount,
+  selectCartTotalPrice,
+} from "../../redux/selectors/cart.selector";
 
 function Checkout() {
-  const { cart, itemsCount, totalPrice } = useSelector(cartSelector);
+  const cartItems = useSelector(selectCartItems);
+  const totalPrice = useSelector(selectCartTotalPrice);
+  const itemsCount = useSelector(selectCartItemsCount);
 
   return (
     <CheckoutPageContainer>
@@ -24,7 +31,7 @@ function Checkout() {
       </CartItemsHeader>
       <CartItemsContainer>
         {itemsCount ? (
-          cart.map((cartItem) => (
+          cartItems.map((cartItem) => (
             <CartItem key={cartItem.key} cartItem={cartItem} />
           ))
         ) : (

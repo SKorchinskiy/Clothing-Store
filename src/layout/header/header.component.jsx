@@ -14,16 +14,16 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { userSelector } from "../../redux/selectors/user.selector";
-import { cartSelector } from "../../redux/selectors/cart.selector";
+import { selectCurrentUser } from "../../redux/selectors/user.selector";
+import { selectIsCartOpen } from "../../redux/selectors/cart.selector";
 import { setCurrentUserAction } from "../../redux/actions/user/user.action";
 
 function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { currentUser } = useSelector(userSelector);
-  const { isCartOpen } = useSelector(cartSelector);
+  const isCartOpen = useSelector(selectIsCartOpen);
+  const currentUser = useSelector(selectCurrentUser);
 
   useEffect(() => {
     const unsubscribe = observeStateChange((user) => {
