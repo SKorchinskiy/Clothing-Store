@@ -9,10 +9,7 @@ import { useLoaderData } from "react-router-dom";
 import ProductItem from "../../components/product-item/product-item.component";
 
 function Category() {
-  const {
-    category: { title },
-    items,
-  } = useLoaderData();
+  const { title, items } = useLoaderData();
   return (
     <CategoryPreviewContainer>
       <h2>{title}</h2>
