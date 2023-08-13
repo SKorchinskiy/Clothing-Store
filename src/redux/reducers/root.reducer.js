@@ -10,6 +10,4 @@ const rootReducer = combineReducers({
   categories: categoriesReducer,
 });
 
-console.log(rootReducer);
-
 export default rootReducer;
