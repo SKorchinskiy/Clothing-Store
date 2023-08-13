@@ -1,7 +1,7 @@
 import "./cart-item.styles.scss";
 
 import { useDispatch, useSelector } from "react-redux";
-import { cartSelector } from "../../redux/selectors/cart.selector";
+import { selectCartItems } from "../../redux/selectors/cart.selector";
 import {
   addToCartAction,
   removeFromCartAction,
@@ -12,13 +12,14 @@ function CartItem({ cartItem }) {
   const { imageUrl, name, quantity, price } = cartItem;
 
   const dispatch = useDispatch();
-  const { cart } = useSelector(cartSelector);
+  const cartItems = useSelector(selectCartItems);
 
-  const increaseItemQuantity = () => dispatch(addToCartAction(cart, cartItem));
+  const increaseItemQuantity = () =>
+    dispatch(addToCartAction(cartItems, cartItem));
   const decreaseItemQuantity = () =>
-    dispatch(removeFromCartAction(cart, cartItem));
+    dispatch(removeFromCartAction(cartItems, cartItem));
   const clearItemFromCart = () =>
-    dispatch(clearItemFromCartAction(cart, cartItem));
+    dispatch(clearItemFromCartAction(cartItems, cartItem));
 
   return (
     <div className="cart-item-container">
