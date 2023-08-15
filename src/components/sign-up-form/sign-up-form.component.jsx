@@ -1,12 +1,12 @@
 import { SignUpFormContainer, SignUpFormHeader } from "./sign-up-form.styles";
 
-import { signUpUserByEmail } from "../../configs/firebase.config";
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Button from "../button/button.component";
 import FormInput from "../form-input/form-input.component";
+import { useDispatch } from "react-redux";
+import { startEmailSignUp } from "../../redux/actions/user/user.action";
 
 const defaultFormInput = {
   name: "",
@@ -16,6 +16,7 @@ const defaultFormInput = {
 };
 
 function SignUpForm() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [formInput, setFormInput] = useState(defaultFormInput);
@@ -25,16 +26,13 @@ function SignUpForm() {
     setFormInput({ ...formInput, [name]: value });
   };
 
-  const onFormSubmit = async (event) => {
+  const onFormSubmit = (event) => {
     event.preventDefault();
     const { name, email, password, confirmPassword } = formInput;
     if (password !== confirmPassword) {
       return alert(`Confirmation password doesn't match the original one!`);
     }
-    const user = await signUpUserByEmail({ name, email, password });
-    if (user) {
-      navigate("/home");
-    }
+    dispatch(startEmailSignUp({ name, email, password }));
   };
 
   return (

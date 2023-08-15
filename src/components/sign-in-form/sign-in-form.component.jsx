@@ -4,16 +4,16 @@ import {
   SignInFormContainer,
 } from "./sign-in-form.styles";
 
-import {
-  signInUserByEmail,
-  signInUserWithGoogle,
-} from "../../configs/firebase.config";
-
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import Button from "../button/button.component";
 import FormInput from "../form-input/form-input.component";
+import { useDispatch } from "react-redux";
+
+import {
+  startEmailSignIn,
+  startGoogleSignIn,
+} from "../../redux/actions/user/user.action";
 
 const defaultFormInput = {
   email: "",
@@ -21,24 +21,18 @@ const defaultFormInput = {
 };
 
 function SignInForm() {
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [formInput, setFormInput] = useState(defaultFormInput);
 
-  const onFormSubmit = async (event) => {
+  const onFormSubmit = (event) => {
     event.preventDefault();
     const { email, password } = formInput;
-    const user = await signInUserByEmail(email, password);
-    if (user) {
-      navigate("/home");
-    }
+    dispatch(startEmailSignIn(email, password));
   };
 
-  const signInWithGoogle = async () => {
-    const user = await signInUserWithGoogle();
-    if (user) {
-      navigate("/home");
-    }
+  const signInWithGoogle = () => {
+    dispatch(startGoogleSignIn());
   };
 
   const onFormInputChange = (event) => {
