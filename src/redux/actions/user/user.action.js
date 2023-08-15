@@ -5,6 +5,7 @@ import {
   signInUserByEmail,
   signUpUserByEmail,
   signOutUser,
+  getCurrentUser,
 } from "../../../configs/firebase.config";
 
 export function setCurrentUser(user) {
@@ -68,6 +69,18 @@ export function signOutCurrentUserAsync() {
     try {
       await signOutUser();
       dispatch(setCurrentUser(null));
+    } catch (error) {
+      dispatch(fetchCurrentUserFailed(error));
+    }
+  };
+}
+
+export function checkCurrentUserSession() {
+  return async (dispatch) => {
+    dispatch(fetchCurrentUserStart());
+    try {
+      const currentUser = await getCurrentUser();
+      dispatch(fetchCurrentUserSuccess(currentUser));
     } catch (error) {
       dispatch(fetchCurrentUserFailed(error));
     }
