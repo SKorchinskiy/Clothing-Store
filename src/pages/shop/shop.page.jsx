@@ -1,32 +1,38 @@
 import { CategoriesContainer } from "./shop.styles";
 
-import { getAllCategoriesProducts } from "../../utils/firebase.utils";
-
 import { useEffect } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { selectCategories } from "../../redux/selectors/categories.selector";
-import { setCategoriesAction } from "../../redux/actions/categories/categories.action";
+import {
+  selectCategories,
+  selectIsLoading,
+} from "../../redux/selectors/categories.selector";
+import { fetchCategoriesAsync } from "../../redux/actions/categories/categories.action";
 
 import CategoryPreview from "../../components/category-preview/category-preview.component";
+import Loader from "../../components/loader/loader.component";
 
 function Shop() {
   const dispatch = useDispatch();
 
   const categories = useSelector(selectCategories);
+  const isLoading = useSelector(selectIsLoading);
 
   useEffect(() => {
-    const getCategoriesData = async () => await getAllCategoriesProducts(5);
-    getCategoriesData().then((data) => dispatch(setCategoriesAction(data)));
+    dispatch(fetchCategoriesAsync());
   }, [dispatch]);
 
   return (
     <CategoriesContainer>
-      {categories.map((category) => {
-        return (
-          <CategoryPreview key={category.categoryId} category={category} />
-        );
-      })}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        categories.map((category) => {
+          return (
+            <CategoryPreview key={category.categoryId} category={category} />
+          );
+        })
+      )}
     </CategoriesContainer>
   );
 }
