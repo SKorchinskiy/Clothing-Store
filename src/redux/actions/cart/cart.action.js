@@ -51,5 +51,5 @@ function clearItemFromCart(cartItems, itemToClear) {
 }
 
 export function toggleCartIsOpen(isOpen) {
-  return createAction("TOGGLE_CART", isOpen);
+  return createAction(CART_ACTION_TYPES.TOGGLE_CART, isOpen);
 }
