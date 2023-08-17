@@ -1,28 +1,32 @@
-import rootReducer from "../reducers/root.reducer";
 import {
   applyMiddleware,
   compose,
   legacy_createStore as createStore,
 } from "redux";
-import { devToolsEnhancer } from "@redux-devtools/extension";
-import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import { persistReducer, persistStore } from "redux-persist";
+import createSagaMiddleware from "redux-saga";
 
-import thunk from "redux-thunk";
+import { devToolsEnhancer } from "@redux-devtools/extension";
+
+import rootSaga from "../sagas/root.saga";
+import rootReducer from "../reducers/root.reducer";
 
 const persistConfig = {
   key: "root",
   storage,
   whitelist: ["cart"],
 };
-
-const middlewares = [thunk];
-
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-export const store = createStore(
+const sagaMiddleware = createSagaMiddleware();
+const middlewares = [sagaMiddleware];
+
+const store = createStore(
   persistedReducer,
   compose(applyMiddleware(...middlewares), devToolsEnhancer())
 );
+sagaMiddleware.run(rootSaga);
+const persistor = persistStore(store);
 
-export const persistor = persistStore(store);
+export { store, persistor };
