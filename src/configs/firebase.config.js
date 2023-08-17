@@ -51,7 +51,7 @@ export async function signUpUserByEmail(userData) {
   }
 }
 
-export async function signInUserByEmail(email, password) {
+export async function signInUserByEmail({ email, password }) {
   try {
     const { user } = await signInWithEmailAndPassword(auth, email, password);
     return user;
