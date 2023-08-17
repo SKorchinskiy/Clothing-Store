@@ -1,7 +1,6 @@
 import { SignUpFormContainer, SignUpFormHeader } from "./sign-up-form.styles";
 
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import Button from "../button/button.component";
 import FormInput from "../form-input/form-input.component";
@@ -17,7 +16,6 @@ const defaultFormInput = {
 
 function SignUpForm() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const [formInput, setFormInput] = useState(defaultFormInput);
 
