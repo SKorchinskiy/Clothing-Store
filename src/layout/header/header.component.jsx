@@ -16,7 +16,7 @@ import { selectCurrentUser } from "../../redux/selectors/user.selector";
 import { selectIsCartOpen } from "../../redux/selectors/cart.selector";
 import {
   checkCurrentUserSession,
-  signOutCurrentUserAsync,
+  startSignOut,
 } from "../../redux/actions/user/user.action";
 
 function Header() {
@@ -31,7 +31,7 @@ function Header() {
   }, [dispatch]);
 
   const signOut = () => {
-    dispatch(signOutCurrentUserAsync()).then(() => navigate("/auth"));
+    dispatch(startSignOut()).then(() => navigate("/auth"));
   };
 
   return (

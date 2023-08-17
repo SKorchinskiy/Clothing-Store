@@ -7,7 +7,7 @@ import {
   selectCategories,
   selectIsLoading,
 } from "../../redux/selectors/categories.selector";
-import { fetchCategoriesAsync } from "../../redux/actions/categories/categories.action";
+import { fetchCategoriesStart } from "../../redux/actions/categories/categories.action";
 
 import CategoryPreview from "../../components/category-preview/category-preview.component";
 import Loader from "../../components/loader/loader.component";
@@ -17,9 +17,8 @@ function Shop() {
 
   const categories = useSelector(selectCategories);
   const isLoading = useSelector(selectIsLoading);
-
   useEffect(() => {
-    dispatch(fetchCategoriesAsync());
+    dispatch(fetchCategoriesStart());
   }, [dispatch]);
 
   return (

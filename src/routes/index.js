@@ -7,7 +7,6 @@ import Auth from "../pages/auth/auth.page";
 import Shop from "../pages/shop/shop.page";
 import Checkout from "../pages/checkout/checkout.page";
 import Category from "../pages/category/category.page";
-import { getProductsFromCategory } from "../utils/firebase.utils";
 
 const router = createBrowserRouter([
   {
@@ -32,8 +31,6 @@ const router = createBrowserRouter([
       },
       {
         path: "category/:categoryName",
-        loader: async ({ params: { categoryName } }) =>
-          await getProductsFromCategory(categoryName),
         element: <Category />,
       },
     ],

@@ -1,88 +1,57 @@
 import { USER_ACTION_TYPES } from "./user.type";
 import { createAction } from "../create-action.helper";
-import {
-  signInUserWithGoogle,
-  signInUserByEmail,
-  signUpUserByEmail,
-  signOutUser,
-  getCurrentUser,
-} from "../../../configs/firebase.config";
 
 export function setCurrentUser(user) {
   return createAction(USER_ACTION_TYPES.SET_USER, user);
 }
 
-function fetchCurrentUserStart() {
-  return createAction(USER_ACTION_TYPES.FETCH_CURRENT_USER_START);
-}
-
-function fetchCurrentUserSuccess(currentUser) {
-  return createAction(
-    USER_ACTION_TYPES.FETCH_CURRENT_USER_SUCCESS,
-    currentUser
-  );
-}
-
-function fetchCurrentUserFailed(error) {
-  return createAction(USER_ACTION_TYPES.FETCH_CURRENT_USER_FAILED, error);
-}
-
-export function startEmailSignUp({ name, email, password }) {
-  return async (dispatch) => {
-    dispatch(fetchCurrentUserStart());
-    try {
-      const currentUser = await signUpUserByEmail({ name, email, password });
-      dispatch(fetchCurrentUserSuccess(currentUser));
-    } catch (error) {
-      dispatch(fetchCurrentUserFailed(error));
-    }
-  };
+export function checkCurrentUserSession() {
+  return createAction(USER_ACTION_TYPES.CHECK_USER_SESSION);
 }
 
 export function startGoogleSignIn() {
-  return async (dispatch) => {
-    dispatch(fetchCurrentUserStart());
-    try {
-      const currentUser = await signInUserWithGoogle();
-      dispatch(fetchCurrentUserSuccess(currentUser));
-    } catch (error) {
-      dispatch(fetchCurrentUserFailed(error));
-    }
-  };
+  return createAction(USER_ACTION_TYPES.GOOGLE_SIGN_IN_START);
 }
 
 export function startEmailSignIn(email, password) {
-  return async (dispatch) => {
-    dispatch(fetchCurrentUserStart);
-    try {
-      const currentUser = await signInUserByEmail(email, password);
-      dispatch(fetchCurrentUserSuccess(currentUser));
-    } catch (error) {
-      dispatch(fetchCurrentUserFailed(error));
-    }
-  };
+  return createAction(USER_ACTION_TYPES.EMAIL_SIGN_IN_START, {
+    email,
+    password,
+  });
 }
 
-export function signOutCurrentUserAsync() {
-  return async (dispatch) => {
-    dispatch(fetchCurrentUserStart());
-    try {
-      await signOutUser();
-      dispatch(setCurrentUser(null));
-    } catch (error) {
-      dispatch(fetchCurrentUserFailed(error));
-    }
-  };
+export function startEmailSignUp({ name, email, password }) {
+  return createAction(USER_ACTION_TYPES.EMAIL_SIGN_UP_START, {
+    name,
+    email,
+    password,
+  });
 }
 
-export function checkCurrentUserSession() {
-  return async (dispatch) => {
-    dispatch(fetchCurrentUserStart());
-    try {
-      const currentUser = await getCurrentUser();
-      dispatch(fetchCurrentUserSuccess(currentUser));
-    } catch (error) {
-      dispatch(fetchCurrentUserFailed(error));
-    }
-  };
+export function startSignOut() {
+  return createAction(USER_ACTION_TYPES.SIGN_OUT_START);
+}
+
+export function signInSuccess(currentUser) {
+  return createAction(USER_ACTION_TYPES.SIGN_IN_SUCCESS, currentUser);
+}
+
+export function signUpSuccess(currentUser) {
+  return createAction(USER_ACTION_TYPES.SIGN_UP_SUCCESS, currentUser);
+}
+
+export function signOutSuccess() {
+  return createAction(USER_ACTION_TYPES.SIGN_USER_OUT, null);
+}
+
+export function signInFailed(error) {
+  return createAction(USER_ACTION_TYPES.SIGN_IN_FAILED, error);
+}
+
+export function signUpFailed(error) {
+  return createAction(USER_ACTION_TYPES.SIGN_UP_FAILED, error);
+}
+
+export function signOutFailed(error) {
+  return createAction(USER_ACTION_TYPES.SIGN_OUT_FAILED, error);
 }
