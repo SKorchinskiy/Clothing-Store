@@ -3,23 +3,48 @@ import {
   CategoryPreviewContainer,
 } from "./category.styles";
 
-import { Fragment } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Fragment, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+
+import {
+  selectCategoryTitle,
+  selectCategoryItems,
+  selectIsCategoryLoading,
+} from "../../redux/selectors/category.selector";
 
 import ProductItem from "../../components/product-item/product-item.component";
+import { fetchCurrentCategoryStart } from "../../redux/actions/category/category.action";
+import Loader from "../../components/loader/loader.component";
 
 function Category() {
-  const { title, items } = useLoaderData();
+  const { categoryName } = useParams();
+  const dispatch = useDispatch();
+
+  const title = useSelector(selectCategoryTitle);
+  const items = useSelector(selectCategoryItems);
+  const isLoading = useSelector(selectIsCategoryLoading);
+
+  useEffect(() => {
+    dispatch(fetchCurrentCategoryStart(categoryName));
+  }, [categoryName, dispatch]);
+
   return (
     <CategoryPreviewContainer>
-      <h2>{title}</h2>
-      <CategoryPreviewItems>
-        {items.map((item) => (
-          <Fragment key={item.id}>
-            <ProductItem product={item}></ProductItem>
-          </Fragment>
-        ))}
-      </CategoryPreviewItems>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <h2>{title}</h2>
+          <CategoryPreviewItems>
+            {items.map((item) => (
+              <Fragment key={item.id}>
+                <ProductItem product={item}></ProductItem>
+              </Fragment>
+            ))}
+          </CategoryPreviewItems>
+        </>
+      )}
     </CategoryPreviewContainer>
   );
 }
