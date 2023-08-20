@@ -14,11 +14,27 @@ import {
   selectCartItemsCount,
   selectCartTotalPrice,
 } from "../../redux/selectors/cart.selector";
+import PaymentForm from "../../components/payment-form/payment-form.component";
+import { useEffect, useState } from "react";
 
 function Checkout() {
+  const [clientSecret, setClientSecret] = useState("");
+
   const cartItems = useSelector(selectCartItems);
   const totalPrice = useSelector(selectCartTotalPrice);
   const itemsCount = useSelector(selectCartItemsCount);
+
+  useEffect(() => {
+    fetch("/.netlify/functions/create-payment-intent", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ amount: totalPrice }),
+    })
+      .then((response) => response.json())
+      .then((data) => setClientSecret(data.clientSecret));
+  }, [totalPrice]);
 
   return (
     <CheckoutPageContainer>
@@ -41,6 +57,7 @@ function Checkout() {
       <CheckoutResumeContainer>
         <span>Total Price: ${totalPrice}</span>
       </CheckoutResumeContainer>
+      <PaymentForm clientSecret={clientSecret} />
     </CheckoutPageContainer>
   );
 }
