@@ -1,25 +1,14 @@
 import "./cart-item.styles.scss";
 
-import { useDispatch, useSelector } from "react-redux";
-import { selectCartItems } from "../../redux/selectors/cart.selector";
-import {
-  addToCartAction,
-  removeFromCartAction,
-  clearItemFromCartAction,
-} from "../../redux/actions/cart/cart.action";
+import { memo } from "react";
 
-function CartItem({ cartItem }) {
+function CartItem({
+  cartItem,
+  increaseItemQuantity,
+  decreaseItemQuantity,
+  clearItemFromCart,
+}) {
   const { imageUrl, name, quantity, price } = cartItem;
-
-  const dispatch = useDispatch();
-  const cartItems = useSelector(selectCartItems);
-
-  const increaseItemQuantity = () =>
-    dispatch(addToCartAction(cartItems, cartItem));
-  const decreaseItemQuantity = () =>
-    dispatch(removeFromCartAction(cartItems, cartItem));
-  const clearItemFromCart = () =>
-    dispatch(clearItemFromCartAction(cartItems, cartItem));
 
   return (
     <div className="cart-item-container">
@@ -27,17 +16,20 @@ function CartItem({ cartItem }) {
       <div className="item-details">
         <div className="cart-item-element">{name}</div>
         <div className="cart-item-element">
-          <div className="arrow" onClick={decreaseItemQuantity}>
+          <div className="arrow" onClick={() => decreaseItemQuantity(cartItem)}>
             &#10092;
           </div>
           {quantity}
-          <div className="arrow" onClick={increaseItemQuantity}>
+          <div className="arrow" onClick={() => increaseItemQuantity(cartItem)}>
             &#10093;
           </div>
         </div>
         <div className="cart-item-element">${price}</div>
         <div className="cart-item-element">
-          <div className="remove-btn" onClick={clearItemFromCart}>
+          <div
+            className="remove-btn"
+            onClick={() => clearItemFromCart(cartItem)}
+          >
             &#10005;
           </div>
         </div>
@@ -46,4 +38,4 @@ function CartItem({ cartItem }) {
   );
 }
 
-export default CartItem;
+export default memo(CartItem);
