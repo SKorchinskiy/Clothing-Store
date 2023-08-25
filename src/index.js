@@ -1,5 +1,7 @@
 import "./index.css";
 
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 
@@ -26,3 +28,4 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
+serviceWorkerRegistration.register();
