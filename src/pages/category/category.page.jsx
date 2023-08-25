@@ -35,7 +35,9 @@ function Category() {
         <Loader />
       ) : (
         <>
-          <h2>{title}</h2>
+          <h2>
+            <span>{title.toUpperCase()}</span>
+          </h2>
           <CategoryPreviewItems>
             {items.map((item) => (
               <Fragment key={item.id}>

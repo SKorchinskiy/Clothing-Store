@@ -13,6 +13,9 @@ export const CategoryPreviewContainer = styled.div`
 
   h2 {
     margin-bottom: 20px;
-    cursor: pointer;
+    span {
+      cursor: pointer;
+      font-family: "Josefin Slab";
+    }
   }
 `;

@@ -25,7 +25,9 @@ export const HeaderContainerSide = styled.div`
 `;
 
 export const HeaderContainerElement = styled(Link)`
-  padding: 10px;
+  display: flex;
+  align-items: center;
+  padding: 3px;
   text-decoration: none;
   text-align: center;
   margin-right: 10px;

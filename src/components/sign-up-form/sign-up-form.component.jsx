@@ -1,4 +1,8 @@
-import { SignUpFormContainer, SignUpFormHeader } from "./sign-up-form.styles";
+import {
+  SignUpFormContainer,
+  SignUpFormHeader,
+  SignUpFormBody,
+} from "./sign-up-form.styles";
 
 import { useState } from "react";
 
@@ -34,12 +38,12 @@ function SignUpForm() {
   };
 
   return (
-    <div>
+    <SignUpFormContainer>
       <SignUpFormHeader>
         <h3>I don't have an account</h3>
         <p>Sign Up with your email and password</p>
       </SignUpFormHeader>
-      <SignUpFormContainer onSubmit={onFormSubmit}>
+      <SignUpFormBody onSubmit={onFormSubmit}>
         <FormInput
           label="name"
           type="text"
@@ -77,8 +81,8 @@ function SignUpForm() {
           onChange={onFormInputChange}
         />
         <Button type="submit" value="Sign Up" additionalClasses="default-btn" />
-      </SignUpFormContainer>
-    </div>
+      </SignUpFormBody>
+    </SignUpFormContainer>
   );
 }
 

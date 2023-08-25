@@ -30,6 +30,11 @@ export const ProductItemContainer = styled.div`
   &:hover {
     button {
       opacity: 0.85;
+      transition: 0.3s;
+
+      &:active {
+        scale: 0.9;
+      }
     }
     img {
       opacity: 0.8;

@@ -44,11 +44,9 @@ export const CartDropdownContainer = styled.div`
     bottom: 15px;
     scale: 0.8;
 
-    &:hover {
-      scale: 0.9;
-    }
     &:active {
-      scale: 0.8;
+      scale: 0.75;
+      transition-duration: 0.3s;
     }
   }
 `;

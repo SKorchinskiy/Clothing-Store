@@ -1,5 +1,6 @@
 import {
   SignInOptions,
+  SignInFormBody,
   SignInFormHeader,
   SignInFormContainer,
 } from "./sign-in-form.styles";
@@ -41,12 +42,12 @@ function SignInForm() {
   };
 
   return (
-    <div>
+    <SignInFormContainer>
       <SignInFormHeader>
         <h3>I already have an account</h3>
         <p>Sign in with your email and password</p>
       </SignInFormHeader>
-      <SignInFormContainer onSubmit={onFormSubmit}>
+      <SignInFormBody onSubmit={onFormSubmit}>
         <FormInput
           label="email"
           name="email"
@@ -78,8 +79,8 @@ function SignInForm() {
             onClick={signInWithGoogle}
           />
         </SignInOptions>
-      </SignInFormContainer>
-    </div>
+      </SignInFormBody>
+    </SignInFormContainer>
   );
 }
 
