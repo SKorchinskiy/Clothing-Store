@@ -6,19 +6,27 @@ import {
   CheckoutResumeContainer,
 } from "./checkout.styles";
 
+import {
+  addToCartAction,
+  removeFromCartAction,
+  clearItemFromCartAction,
+} from "../../redux/actions/cart/cart.action";
+
 import CartItem from "../../components/cart-item/cart-item.component";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   selectCartItems,
   selectCartItemsCount,
   selectCartTotalPrice,
 } from "../../redux/selectors/cart.selector";
 import PaymentForm from "../../components/payment-form/payment-form.component";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 function Checkout() {
   const [clientSecret, setClientSecret] = useState("");
+
+  const dispatch = useDispatch();
 
   const cartItems = useSelector(selectCartItems);
   const totalPrice = useSelector(selectCartTotalPrice);
@@ -36,6 +44,19 @@ function Checkout() {
       .then((data) => setClientSecret(data.clientSecret));
   }, [totalPrice]);
 
+  const increaseItemQuantity = useCallback(
+    (cartItem) => dispatch(addToCartAction(cartItems, cartItem)),
+    [cartItems, dispatch]
+  );
+  const decreaseItemQuantity = useCallback(
+    (cartItem) => dispatch(removeFromCartAction(cartItems, cartItem)),
+    [cartItems, dispatch]
+  );
+  const clearItemFromCart = useCallback(
+    (cartItem) => dispatch(clearItemFromCartAction(cartItems, cartItem)),
+    [cartItems, dispatch]
+  );
+
   return (
     <CheckoutPageContainer>
       <CartItemsHeader>
@@ -48,7 +69,13 @@ function Checkout() {
       <CartItemsContainer>
         {itemsCount ? (
           cartItems.map((cartItem) => (
-            <CartItem key={cartItem.id} cartItem={cartItem} />
+            <CartItem
+              key={cartItem.id}
+              cartItem={cartItem}
+              increaseItemQuantity={increaseItemQuantity}
+              decreaseItemQuantity={decreaseItemQuantity}
+              clearItemFromCart={clearItemFromCart}
+            />
           ))
         ) : (
           <EmptyCart>No items were added to cart!</EmptyCart>
