@@ -1,12 +1,13 @@
+import { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 
 import Layout from "../layout/layout.component";
 
-import Home from "../pages/home/home.page";
-import Auth from "../pages/auth/auth.page";
-import Shop from "../pages/shop/shop.page";
-import Checkout from "../pages/checkout/checkout.page";
-import Category from "../pages/category/category.page";
+const Home = lazy(() => import("../pages/home/home.page"));
+const Auth = lazy(() => import("../pages/auth/auth.page"));
+const Shop = lazy(() => import("../pages/shop/shop.page"));
+const Checkout = lazy(() => import("../pages/checkout/checkout.page"));
+const Category = lazy(() => import("../pages/category/category.page"));
 
 const router = createBrowserRouter([
   {
