@@ -1,9 +1,4 @@
-import {
-  EmptyCart,
-  CartDropdownContainer,
-  DropdownItemContainer,
-  DropdownItemDetails,
-} from "./cart-dropdown.styles";
+import { EmptyCart, CartDropdownContainer } from "./cart-dropdown.styles";
 
 import { useNavigate } from "react-router-dom";
 
@@ -13,6 +8,7 @@ import {
   selectCartItems,
   selectCartItemsCount,
 } from "../../redux/selectors/cart.selector";
+import DropdownItem from "../dropdown-item/dropdown-item.component";
 
 function CartDropdown() {
   const cart = useSelector(selectCartItems);
@@ -25,15 +21,7 @@ function CartDropdown() {
     <CartDropdownContainer>
       {itemsCount ? (
         cart.map((cartItem) => (
-          <DropdownItemContainer key={cartItem.id}>
-            <img src={cartItem.imageUrl} alt={cartItem.name} />
-            <DropdownItemDetails>
-              <div>{cartItem.name}</div>
-              <div>
-                {cartItem.quantity} x ${cartItem.price}
-              </div>
-            </DropdownItemDetails>
-          </DropdownItemContainer>
+          <DropdownItem key={cartItem.id} cartItem={cartItem} />
         ))
       ) : (
         <EmptyCart>Cart is empty!</EmptyCart>
