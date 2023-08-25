@@ -17,7 +17,9 @@ function CategoryPreview({ category }) {
 
   return (
     <CategoryPreviewContainer>
-      <h2 onClick={goToCategory}>{title}</h2>
+      <h2>
+        <span onClick={goToCategory}>{title.toUpperCase()}</span>
+      </h2>
       <CategoryPreviewItems>
         {items.map((item) => (
           <Fragment key={item.id}>

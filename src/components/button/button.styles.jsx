@@ -8,17 +8,18 @@ const BaseButton = styled.button`
   font-family: Josefin Slab, sans-serif;
   letter-spacing: 2px;
   font-size: large;
+  margin-bottom: 10px;
   cursor: pointer;
 
   &:hover {
-    scale: 105%;
-    user-select: none;
-    transition-duration: 0.4s;
+    opacity: 0.9;
+    transition-duration: 0.3s;
   }
 
-  &:active {
-    transition-duration: 0.1s;
-    scale: 95%;
+  @media screen and (max-width: 400px) {
+    height: 40px;
+    font-size: medium;
+    padding: 5px;
   }
 `;
 
@@ -26,11 +27,6 @@ export const DefaultButton = styled(BaseButton)`
   background-color: rgba(0, 0, 0, 0.9);
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
   color: white;
-
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.9);
-    color: black;
-  }
 `;
 
 export const InvertedButton = styled(BaseButton)`
@@ -38,9 +34,12 @@ export const InvertedButton = styled(BaseButton)`
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
   color: black;
 
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.9);
-    color: white;
+  @media screen and (min-width: 400px) {
+    &:hover {
+      transition: 0.5s;
+      background-color: rgba(0, 0, 0, 0.9);
+      color: white;
+    }
   }
 `;
 

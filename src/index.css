@@ -8,4 +8,5 @@
 
 body {
   padding: 10px 30px;
+  min-width: 320px;
 }

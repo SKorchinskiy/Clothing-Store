@@ -9,6 +9,10 @@ export const Input = styled.input`
   border: 0px;
   border-bottom: 1px solid black;
   outline: none;
+
+  @media screen and (max-width: 400px) {
+    font-size: medium;
+  }
 `;
 
 export const FormInputContainer = styled.div`
@@ -19,4 +23,8 @@ export const FormInputContainer = styled.div`
   letter-spacing: 2px;
   font-size: large;
   margin-bottom: 25px;
+
+  @media screen and (max-width: 400px) {
+    font-size: medium;
+  }
 `;
