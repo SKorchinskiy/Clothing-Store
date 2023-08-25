@@ -7,6 +7,10 @@ export const HeaderContainer = styled.div`
   width: 100%;
   font-family: Comfortaa, serif;
   font-size: large;
+
+  @media screen and (max-width: 400px) {
+    font-size: medium;
+  }
 `;
 
 export const HeaderContainerSide = styled.div`
@@ -14,6 +18,10 @@ export const HeaderContainerSide = styled.div`
   display: flex;
   padding: 20px 0px;
   justify-content: ${({ $side }) => $side};
+
+  @media screen and (max-width: 400px) {
+    width: ${({ $side }) => ($side === "left" ? "30%" : "70%")};
+  }
 `;
 
 export const HeaderContainerElement = styled(Link)`
@@ -23,6 +31,10 @@ export const HeaderContainerElement = styled(Link)`
   margin-right: 10px;
   color: black;
   cursor: pointer;
+
+  @media screen and (max-width: 400px) {
+    margin-right: 5px;
+  }
 
   &:last-child {
     margin-right: 0;
