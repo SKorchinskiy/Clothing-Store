@@ -16,7 +16,7 @@ function CartIcon() {
 
   useEffect(() => {
     dispatch(toggleCartIsOpen(false));
-  }, []);
+  }, [dispatch]);
 
   const toggleIsCartOpen = () => dispatch(toggleCartIsOpen(!isCartOpen));
 
