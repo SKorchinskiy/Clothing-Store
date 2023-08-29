@@ -80,7 +80,9 @@ function SignUpForm() {
           required={true}
           onChange={onFormInputChange}
         />
-        <Button type="submit" value="Sign Up" additionalClasses="default-btn" />
+        <Button type="submit" buttonType="default-btn">
+          Sign Up
+        </Button>
       </SignUpFormBody>
     </SignUpFormContainer>
   );

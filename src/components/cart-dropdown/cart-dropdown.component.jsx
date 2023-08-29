@@ -26,12 +26,9 @@ function CartDropdown() {
       ) : (
         <EmptyCart>Cart is empty!</EmptyCart>
       )}
-      <Button
-        type="button"
-        value="Go To Checkout"
-        additionalClasses="default-btn"
-        onClick={goToCheckout}
-      />
+      <Button type="button" buttonType="default-btn" onClick={goToCheckout}>
+        Go To Checkout
+      </Button>
     </CartDropdownContainer>
   );
 }
