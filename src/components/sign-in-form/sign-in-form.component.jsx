@@ -67,17 +67,16 @@ function SignInForm() {
           onChange={onFormInputChange}
         />
         <SignInOptions>
-          <Button
-            type="submit"
-            value="Sign In"
-            additionalClasses="default-btn"
-          />
+          <Button type="submit" buttonType="default-btn">
+            Sign In
+          </Button>
           <Button
             type="button"
-            value="Sign In with Google"
-            additionalClasses="google-btn"
+            buttonType="google-btn"
             onClick={signInWithGoogle}
-          />
+          >
+            Sign In with Google
+          </Button>
         </SignInOptions>
       </SignInFormBody>
     </SignInFormContainer>

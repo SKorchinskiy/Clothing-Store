@@ -33,11 +33,9 @@ export default function PaymentForm({ clientSecret }) {
   return (
     <PaymentFormContainer>
       <CardElementContainer />
-      <Button
-        value={"Pay now"}
-        additionalClasses={"default-btn"}
-        onClick={paymentHandler}
-      />
+      <Button buttonType="default-btn" onClick={paymentHandler}>
+        Pay now
+      </Button>
     </PaymentFormContainer>
   );
 }

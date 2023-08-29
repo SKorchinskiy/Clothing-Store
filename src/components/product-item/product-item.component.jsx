@@ -24,12 +24,9 @@ function ProductItem({ product }) {
         <span>{name}</span>
         <span>${price}</span>
       </ProductItemDetails>
-      <Button
-        type="button"
-        value={"Add To Cart"}
-        additionalClasses="invert-btn"
-        onClick={addToCart}
-      />
+      <Button type="button" buttonType="invert-btn" onClick={addToCart}>
+        Add To Cart
+      </Button>
     </ProductItemContainer>
   );
 }
