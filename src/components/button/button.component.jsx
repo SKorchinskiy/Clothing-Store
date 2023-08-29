@@ -1,15 +1,15 @@
 import { DefaultButton, InvertedButton, GoogleButton } from "./button.styles";
 
-function Button({ value, type, additionalClasses = "", onClick }) {
-  const CustomButton = getStyledButtonComponent(additionalClasses);
+function Button({ children, type, buttonType, onClick }) {
+  const CustomButton = getStyledButtonComponent(buttonType);
   return (
     <CustomButton type={type} onClick={onClick}>
-      {value}
+      {children}
     </CustomButton>
   );
 }
 
-function getStyledButtonComponent(buttonType) {
+function getStyledButtonComponent(buttonType = "default-btn") {
   return {
     "default-btn": DefaultButton,
     "invert-btn": InvertedButton,
