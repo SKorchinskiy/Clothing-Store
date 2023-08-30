@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CategoryList /> component should render provided <Category> components 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bcPKhP cSdPoW"
+  >
+    <div
+      class="sc-hLclGa Neols"
+    >
+      <div
+        class="sc-dkjKgF hYJjlH"
+      />
+      <div
+        class="sc-grXZZQ jQNJqO"
+      >
+        <h2>
+          test category1
+        </h2>
+        <p>
+          Shop Now
+        </p>
+      </div>
+    </div>
+    <div
+      class="sc-hLclGa Neols"
+    >
+      <div
+        class="sc-dkjKgF zmKuE"
+      />
+      <div
+        class="sc-grXZZQ jQNJqO"
+      >
+        <h2>
+          test category2
+        </h2>
+        <p>
+          Shop Now
+        </p>
+      </div>
+    </div>
+    <div
+      class="sc-hLclGa Neols"
+    >
+      <div
+        class="sc-dkjKgF ZSDMN"
+      />
+      <div
+        class="sc-grXZZQ jQNJqO"
+      >
+        <h2>
+          test category3
+        </h2>
+        <p>
+          Shop Now
+        </p>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
