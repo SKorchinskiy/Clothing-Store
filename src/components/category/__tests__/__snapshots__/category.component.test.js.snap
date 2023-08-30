@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Category /> component should render UI elements properly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-dkjKgF jiodqC"
+  >
+    <div
+      class="sc-grXZZQ jPagUx"
+    />
+    <div
+      class="sc-bcPKhP dYFZhQ"
+    >
+      <h2>
+        test category
+      </h2>
+      <p>
+        Shop Now
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
