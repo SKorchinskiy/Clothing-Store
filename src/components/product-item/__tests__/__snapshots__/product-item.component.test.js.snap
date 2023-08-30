@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductItem /> component should render UI elements properly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-grXZZQ keMhTj"
+  >
+    <img
+      alt="test product name"
+      src="productItemUrl"
+    />
+    <div
+      class="sc-bcPKhP cVEhmC"
+    >
+      <span>
+        test product name
+      </span>
+      <span>
+        $10
+      </span>
+    </div>
+    <button
+      class="sc-dkjKgF sc-eDnVMP bSMzDe iPyBQU"
+      type="button"
+    >
+      Add To Cart
+    </button>
+  </div>
+</DocumentFragment>
+`;
