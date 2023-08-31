@@ -6,7 +6,7 @@ import renderWithProviders from "../../../utils/test.utils";
 
 import ProductItem from "../product-item.component";
 
-import { productItemStub } from "../../../stubs/product-item.stub";
+import { productItemStub } from "./stubs/product-item.stub";
 
 describe("<ProductItem /> component", () => {
   it("should render UI elements properly", () => {

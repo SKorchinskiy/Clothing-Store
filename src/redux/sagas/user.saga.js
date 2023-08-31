@@ -5,10 +5,16 @@ import {
   signOutUser,
   signInUserWithGoogle,
   signInUserByEmail,
+  signUpUserByEmail,
 } from "../../configs/firebase.config";
 
 import { USER_ACTION_TYPES } from "../actions/user/user.type";
-import { signInSuccess, signInFailed } from "../actions/user/user.action";
+import {
+  signInSuccess,
+  signInFailed,
+  signUpFailed,
+  signUpSuccess,
+} from "../actions/user/user.action";
 
 function* userSaga() {
   const watcherSagas = [
@@ -16,6 +22,7 @@ function* userSaga() {
     signCurrentUserOutWatcher,
     googleSignInWatcher,
     emailSignInWatcher,
+    signUpUserWatcher,
   ];
   yield all(watcherSagas.map(call));
 }
@@ -73,6 +80,19 @@ function* signInWithGoogle() {
     yield put(signInSuccess(currentUser));
   } catch (error) {
     yield put(signInFailed(error));
+  }
+}
+
+function* signUpUserWatcher() {
+  yield takeLatest(USER_ACTION_TYPES.EMAIL_SIGN_UP_START, signUpUser);
+}
+
+function* signUpUser(action) {
+  try {
+    const currentUser = yield call(signUpUserByEmail, action.payload);
+    yield put(signUpSuccess(currentUser));
+  } catch (error) {
+    yield put(signUpFailed(error));
   }
 }
 

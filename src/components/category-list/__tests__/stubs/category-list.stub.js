@@ -1,8 +1,3 @@
-export const category = {
-  title: "test category",
-  imageUrl: "categoryImageUrl",
-};
-
 export const categoriesArray = [
   {
     id: 1,

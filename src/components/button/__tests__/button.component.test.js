@@ -1,4 +1,4 @@
-import { screen, render } from "@testing-library/react";
+import { screen, render, act } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 import Button from "../button.component";
@@ -61,12 +61,12 @@ describe("<Button/> component", () => {
     expect(textElement).toBeInTheDocument();
   });
 
-  it("should call event handler when clicked", () => {
+  it("should call event handler when clicked", async () => {
     const mockedHandler = jest.fn();
     render(<Button onClick={mockedHandler} />);
 
     const testButton = screen.getByRole("button");
-    userEvent.click(testButton);
+    await act(async () => await userEvent.click(testButton));
 
     expect.assertions(1);
     expect(mockedHandler).toBeCalled();

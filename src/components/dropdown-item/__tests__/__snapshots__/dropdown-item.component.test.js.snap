@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DropdownItem /> component should render initial UI properly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-grXZZQ duBxGz"
+  >
+    <img
+      alt="dropdown/item/1"
+      src="dropdown/item/imageUrl/1"
+    />
+    <div
+      class="sc-bcPKhP kovsxx"
+    >
+      <div>
+        dropdown/item/1
+      </div>
+      <div>
+        1 x $10
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
