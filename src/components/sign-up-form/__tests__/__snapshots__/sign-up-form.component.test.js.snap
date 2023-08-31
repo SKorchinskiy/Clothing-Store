@@ -22,13 +22,13 @@ exports[`<SignInForm /> component should render initial UI properly 1`] = `
         class="sc-ftLKQv fhLrxm"
       >
         <label
-          for="name"
+          for="signup-name"
         >
           name
         </label>
         <input
           class="sc-iBAaJG fZYlVh"
-          id="name"
+          id="signup-name"
           name="name"
           placeholder="enter a name"
           required=""
@@ -40,13 +40,13 @@ exports[`<SignInForm /> component should render initial UI properly 1`] = `
         class="sc-ftLKQv fhLrxm"
       >
         <label
-          for="email"
+          for="signup-email"
         >
           email
         </label>
         <input
           class="sc-iBAaJG fZYlVh"
-          id="email"
+          id="signup-email"
           name="email"
           placeholder="enter an email"
           required=""
@@ -58,13 +58,13 @@ exports[`<SignInForm /> component should render initial UI properly 1`] = `
         class="sc-ftLKQv fhLrxm"
       >
         <label
-          for="password"
+          for="signup-password"
         >
           password
         </label>
         <input
           class="sc-iBAaJG fZYlVh"
-          id="password"
+          id="signup-password"
           name="password"
           placeholder="enter a password"
           required=""
@@ -76,13 +76,13 @@ exports[`<SignInForm /> component should render initial UI properly 1`] = `
         class="sc-ftLKQv fhLrxm"
       >
         <label
-          for="confirmPassword"
+          for="signup-confirmPassword"
         >
           confirm password
         </label>
         <input
           class="sc-iBAaJG fZYlVh"
-          id="confirmPassword"
+          id="signup-confirmPassword"
           name="confirmPassword"
           placeholder="confirm a password"
           required=""

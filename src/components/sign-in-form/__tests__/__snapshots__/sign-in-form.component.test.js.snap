@@ -22,13 +22,13 @@ exports[`<SignInForm /> component should render UI with user data in the form 1`
         class="sc-pqitP jplaYo"
       >
         <label
-          for="email"
+          for="signin-email"
         >
           email
         </label>
         <input
           class="sc-ftLKQv hgpCSN"
-          id="email"
+          id="signin-email"
           name="email"
           placeholder="enter an email"
           required=""
@@ -40,13 +40,13 @@ exports[`<SignInForm /> component should render UI with user data in the form 1`
         class="sc-pqitP jplaYo"
       >
         <label
-          for="password"
+          for="signin-password"
         >
           password
         </label>
         <input
           class="sc-ftLKQv hgpCSN"
-          id="password"
+          id="signin-password"
           name="password"
           placeholder="enter a password"
           required=""
@@ -97,13 +97,13 @@ exports[`<SignInForm /> component should render initial UI properly 1`] = `
         class="sc-pqitP jplaYo"
       >
         <label
-          for="email"
+          for="signin-email"
         >
           email
         </label>
         <input
           class="sc-ftLKQv hgpCSN"
-          id="email"
+          id="signin-email"
           name="email"
           placeholder="enter an email"
           required=""
@@ -115,13 +115,13 @@ exports[`<SignInForm /> component should render initial UI properly 1`] = `
         class="sc-pqitP jplaYo"
       >
         <label
-          for="password"
+          for="signin-password"
         >
           password
         </label>
         <input
           class="sc-ftLKQv hgpCSN"
-          id="password"
+          id="signin-password"
           name="password"
           placeholder="enter a password"
           required=""

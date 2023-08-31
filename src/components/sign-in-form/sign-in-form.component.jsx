@@ -50,6 +50,7 @@ function SignInForm() {
       <SignInFormBody onSubmit={onFormSubmit}>
         <FormInput
           label="email"
+          prefix="signin"
           name="email"
           type="email"
           value={formInput.email}
@@ -59,6 +60,7 @@ function SignInForm() {
         />
         <FormInput
           label="password"
+          prefix="signin"
           name="password"
           type="password"
           value={formInput.password}
