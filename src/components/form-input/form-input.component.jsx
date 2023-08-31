@@ -11,8 +11,9 @@ function FormInput({
 }) {
   return (
     <FormInputContainer>
-      <label>{label}</label>
+      <label htmlFor={name}>{label}</label>
       <Input
+        id={name}
         type={type}
         required={required}
         value={value}
