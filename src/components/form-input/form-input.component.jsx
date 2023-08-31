@@ -2,6 +2,7 @@ import { Input, FormInputContainer } from "./form-input.styles";
 
 function FormInput({
   label,
+  prefix,
   name,
   type,
   value,
@@ -11,9 +12,9 @@ function FormInput({
 }) {
   return (
     <FormInputContainer>
-      <label htmlFor={name}>{label}</label>
+      <label htmlFor={`${prefix}-${name}`}>{label}</label>
       <Input
-        id={name}
+        id={`${prefix}-${name}`}
         type={type}
         required={required}
         value={value}

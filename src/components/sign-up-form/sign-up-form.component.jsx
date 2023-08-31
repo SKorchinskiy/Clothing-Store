@@ -46,6 +46,7 @@ function SignUpForm() {
       <SignUpFormBody onSubmit={onFormSubmit}>
         <FormInput
           label="name"
+          prefix="signup"
           type="text"
           name="name"
           value={formInput.name}
@@ -55,6 +56,7 @@ function SignUpForm() {
         />
         <FormInput
           label="email"
+          prefix="signup"
           type="email"
           name="email"
           value={formInput.email}
@@ -64,6 +66,7 @@ function SignUpForm() {
         />
         <FormInput
           label="password"
+          prefix="signup"
           type="password"
           name="password"
           value={formInput.password}
@@ -73,6 +76,7 @@ function SignUpForm() {
         />
         <FormInput
           label="confirm password"
+          prefix="signup"
           type="password"
           name="confirmPassword"
           value={formInput.confirmPassword}
