@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SignInForm /> component should render initial UI properly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bcPKhP edaQst"
+  >
+    <div
+      class="sc-dkjKgF fBdIER"
+    >
+      <h3>
+        I don't have an account
+      </h3>
+      <p>
+        Sign Up with your email and password
+      </p>
+    </div>
+    <form
+      class="sc-grXZZQ kywDov"
+    >
+      <div
+        class="sc-ftLKQv fhLrxm"
+      >
+        <label
+          for="name"
+        >
+          name
+        </label>
+        <input
+          class="sc-iBAaJG fZYlVh"
+          id="name"
+          name="name"
+          placeholder="enter a name"
+          required=""
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        class="sc-ftLKQv fhLrxm"
+      >
+        <label
+          for="email"
+        >
+          email
+        </label>
+        <input
+          class="sc-iBAaJG fZYlVh"
+          id="email"
+          name="email"
+          placeholder="enter an email"
+          required=""
+          type="email"
+          value=""
+        />
+      </div>
+      <div
+        class="sc-ftLKQv fhLrxm"
+      >
+        <label
+          for="password"
+        >
+          password
+        </label>
+        <input
+          class="sc-iBAaJG fZYlVh"
+          id="password"
+          name="password"
+          placeholder="enter a password"
+          required=""
+          type="password"
+          value=""
+        />
+      </div>
+      <div
+        class="sc-ftLKQv fhLrxm"
+      >
+        <label
+          for="confirmPassword"
+        >
+          confirm password
+        </label>
+        <input
+          class="sc-iBAaJG fZYlVh"
+          id="confirmPassword"
+          name="confirmPassword"
+          placeholder="confirm a password"
+          required=""
+          type="password"
+          value=""
+        />
+      </div>
+      <button
+        class="sc-hLclGa sc-eDnVMP ibGimQ jZOKtP"
+        type="submit"
+      >
+        Sign Up
+      </button>
+    </form>
+  </div>
+</DocumentFragment>
+`;
