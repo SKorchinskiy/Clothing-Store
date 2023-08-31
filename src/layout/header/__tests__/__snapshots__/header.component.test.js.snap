@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> component should render initial structure properly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-bcPKhP ifnBhh"
+  >
+    <div
+      class="sc-grXZZQ hHOjcc"
+    >
+      <svg
+        style="cursor: pointer;"
+      >
+        crown.svg
+      </svg>
+    </div>
+    <div
+      class="sc-grXZZQ hNCWnH"
+    >
+      <a
+        class="sc-dkjKgF glALSE"
+        href="/"
+      >
+        Shop
+      </a>
+      <a
+        class="sc-dkjKgF glALSE"
+        href="/"
+      >
+        Sign In
+      </a>
+      <div
+        class="sc-jSwlEQ gVkLjW"
+      >
+        <svg
+          class="sc-eDnVMP eMDWkw"
+        >
+          shopping-bag.svg
+        </svg>
+        <span
+          class="sc-hLclGa frgelt"
+        >
+          0
+        </span>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

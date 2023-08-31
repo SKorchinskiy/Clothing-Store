@@ -40,13 +40,17 @@ function Header() {
         <Logo onClick={() => navigate("/home")} style={{ cursor: "pointer" }} />
       </HeaderContainerSide>
       <HeaderContainerSide $side="right">
-        <HeaderContainerElement to={"/shop"}>Shop</HeaderContainerElement>
+        <HeaderContainerElement onClick={() => navigate("/shop")}>
+          Shop
+        </HeaderContainerElement>
         {currentUser ? (
-          <HeaderContainerElement onClick={signOut} to={"/auth"}>
+          <HeaderContainerElement onClick={signOut}>
             Sign Out
           </HeaderContainerElement>
         ) : (
-          <HeaderContainerElement to={"/auth"}>Sign In</HeaderContainerElement>
+          <HeaderContainerElement onClick={() => navigate("/auth")}>
+            Sign In
+          </HeaderContainerElement>
         )}
         <CartIcon />
       </HeaderContainerSide>
