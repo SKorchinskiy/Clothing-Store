@@ -14,9 +14,11 @@ import {
   signInFailed,
   signUpFailed,
   signUpSuccess,
+  signOutSuccess,
+  signOutFailed,
 } from "../actions/user/user.action";
 
-function* userSaga() {
+export function* userSaga() {
   const watcherSagas = [
     isUserAuthenticatedWatcher,
     signCurrentUserOutWatcher,
@@ -24,17 +26,18 @@ function* userSaga() {
     emailSignInWatcher,
     signUpUserWatcher,
   ];
-  yield all(watcherSagas.map(call));
+
+  yield all(watcherSagas.map((saga) => call(saga)));
 }
 
-function* isUserAuthenticatedWatcher() {
+export function* isUserAuthenticatedWatcher() {
   yield takeLatest(
     USER_ACTION_TYPES.CHECK_USER_SESSION,
     checkCurrentUserSession
   );
 }
 
-function* checkCurrentUserSession() {
+export function* checkCurrentUserSession() {
   try {
     const currentUser = yield call(getCurrentUser);
     yield put(signInSuccess(currentUser));
@@ -43,24 +46,24 @@ function* checkCurrentUserSession() {
   }
 }
 
-function* signCurrentUserOutWatcher() {
+export function* signCurrentUserOutWatcher() {
   yield takeLatest(USER_ACTION_TYPES.SIGN_OUT_START, signCurrentUserOut);
 }
 
-function* signCurrentUserOut() {
+export function* signCurrentUserOut() {
   try {
     yield call(signOutUser);
-    yield put(signInSuccess(null));
+    yield put(signOutSuccess(null));
   } catch (error) {
-    yield put(signInSuccess(error));
+    yield put(signOutFailed(error));
   }
 }
 
-function* emailSignInWatcher() {
+export function* emailSignInWatcher() {
   yield takeLatest(USER_ACTION_TYPES.EMAIL_SIGN_IN_START, signInWithEmail);
 }
 
-function* signInWithEmail(action) {
+export function* signInWithEmail(action) {
   const { email, password } = action.payload;
   try {
     const currentUser = yield call(signInUserByEmail, { email, password });
@@ -70,11 +73,11 @@ function* signInWithEmail(action) {
   }
 }
 
-function* googleSignInWatcher() {
+export function* googleSignInWatcher() {
   yield takeLatest(USER_ACTION_TYPES.GOOGLE_SIGN_IN_START, signInWithGoogle);
 }
 
-function* signInWithGoogle() {
+export function* signInWithGoogle() {
   try {
     const currentUser = yield call(signInUserWithGoogle);
     yield put(signInSuccess(currentUser));
@@ -83,11 +86,11 @@ function* signInWithGoogle() {
   }
 }
 
-function* signUpUserWatcher() {
+export function* signUpUserWatcher() {
   yield takeLatest(USER_ACTION_TYPES.EMAIL_SIGN_UP_START, signUpUser);
 }
 
-function* signUpUser(action) {
+export function* signUpUser(action) {
   try {
     const currentUser = yield call(signUpUserByEmail, action.payload);
     yield put(signUpSuccess(currentUser));
