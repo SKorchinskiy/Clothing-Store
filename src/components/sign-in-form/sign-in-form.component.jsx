@@ -47,7 +47,7 @@ function SignInForm() {
         <h3>I already have an account</h3>
         <p>Sign in with your email and password</p>
       </SignInFormHeader>
-      <SignInFormBody onSubmit={onFormSubmit}>
+      <SignInFormBody>
         <FormInput
           label="email"
           prefix="signin"
@@ -69,7 +69,7 @@ function SignInForm() {
           onChange={onFormInputChange}
         />
         <SignInOptions>
-          <Button type="submit" buttonType="default-btn">
+          <Button type="button" buttonType="default-btn" onClick={onFormSubmit}>
             Sign In
           </Button>
           <Button
