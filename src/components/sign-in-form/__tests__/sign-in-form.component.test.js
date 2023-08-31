@@ -71,10 +71,12 @@ describe("<SignInForm /> component", () => {
     await act(async () => await userEvent.click(passwordElement));
     await act(async () => await userEvent.paste(userStub.password));
 
-    await act(async () => await fireEvent.submit(signInButton));
+    await act(async () => await userEvent.click(signInButton));
 
-    expect(mockedUseDispatch).toHaveBeenCalledWith(
-      startEmailSignIn(userStub.email, userStub.password)
+    await waitFor(() =>
+      expect(mockedUseDispatch).toHaveBeenCalledWith(
+        startEmailSignIn(userStub.email, userStub.password)
+      )
     );
   });
 });
