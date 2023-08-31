@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SignInForm /> component should render UI with user data in the form 1`] = `
+<DocumentFragment>
+  <form
+    class="sc-grXZZQ gQFiYD"
+  >
+    <div
+      class="sc-hLclGa dARrIj"
+    >
+      <h3>
+        I already have an account
+      </h3>
+      <p>
+        Sign in with your email and password
+      </p>
+    </div>
+    <div
+      class="sc-dkjKgF dajZYl"
+    >
+      <div
+        class="sc-pqitP jplaYo"
+      >
+        <label>
+          email
+        </label>
+        <input
+          class="sc-ftLKQv hgpCSN"
+          name="email"
+          placeholder="enter an email"
+          required=""
+          type="email"
+          value="test@gmail.com"
+        />
+      </div>
+      <div
+        class="sc-pqitP jplaYo"
+      >
+        <label>
+          password
+        </label>
+        <input
+          class="sc-ftLKQv hgpCSN"
+          name="password"
+          placeholder="enter a password"
+          required=""
+          type="password"
+          value="test123"
+        />
+      </div>
+      <div
+        class="sc-bcPKhP iRlTxp"
+      >
+        <button
+          class="sc-eDnVMP sc-jSwlEQ krXTxx fwyBwp"
+          type="submit"
+        >
+          Sign In
+        </button>
+        <button
+          class="sc-eDnVMP sc-iBAaJG krXTxx dhFVlP"
+          type="button"
+        >
+          Sign In with Google
+        </button>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`<SignInForm /> component should render initial UI properly 1`] = `
+<DocumentFragment>
+  <form
+    class="sc-grXZZQ gQFiYD"
+  >
+    <div
+      class="sc-hLclGa dARrIj"
+    >
+      <h3>
+        I already have an account
+      </h3>
+      <p>
+        Sign in with your email and password
+      </p>
+    </div>
+    <div
+      class="sc-dkjKgF dajZYl"
+    >
+      <div
+        class="sc-pqitP jplaYo"
+      >
+        <label>
+          email
+        </label>
+        <input
+          class="sc-ftLKQv hgpCSN"
+          name="email"
+          placeholder="enter an email"
+          required=""
+          type="email"
+          value=""
+        />
+      </div>
+      <div
+        class="sc-pqitP jplaYo"
+      >
+        <label>
+          password
+        </label>
+        <input
+          class="sc-ftLKQv hgpCSN"
+          name="password"
+          placeholder="enter a password"
+          required=""
+          type="password"
+          value=""
+        />
+      </div>
+      <div
+        class="sc-bcPKhP iRlTxp"
+      >
+        <button
+          class="sc-eDnVMP sc-jSwlEQ krXTxx fwyBwp"
+          type="submit"
+        >
+          Sign In
+        </button>
+        <button
+          class="sc-eDnVMP sc-iBAaJG krXTxx dhFVlP"
+          type="button"
+        >
+          Sign In with Google
+        </button>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
