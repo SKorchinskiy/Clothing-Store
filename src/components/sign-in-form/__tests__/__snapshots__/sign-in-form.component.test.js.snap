@@ -59,7 +59,7 @@ exports[`<SignInForm /> component should render UI with user data in the form 1`
       >
         <button
           class="sc-eDnVMP sc-jSwlEQ krXTxx fwyBwp"
-          type="submit"
+          type="button"
         >
           Sign In
         </button>
@@ -134,7 +134,7 @@ exports[`<SignInForm /> component should render initial UI properly 1`] = `
       >
         <button
           class="sc-eDnVMP sc-jSwlEQ krXTxx fwyBwp"
-          type="submit"
+          type="button"
         >
           Sign In
         </button>
