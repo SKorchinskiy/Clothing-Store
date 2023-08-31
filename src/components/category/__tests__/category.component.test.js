@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
-import { screen, render } from "@testing-library/react";
+import { screen, render, act } from "@testing-library/react";
 
 import Category from "../category.component";
 
@@ -23,11 +23,11 @@ describe("<Category /> component", () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it("should navigate to category when clicked", () => {
+  it("should navigate to category when clicked", async () => {
     render(<Category category={category} />);
 
     const titleElement = screen.getByText(category.title);
-    userEvent.click(titleElement);
+    await act(async () => await userEvent.click(titleElement));
 
     expect(mockedUseNavigate).toHaveBeenCalledWith(
       `/category/${category.title}`
