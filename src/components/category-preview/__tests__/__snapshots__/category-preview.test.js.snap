@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CategoryPreview /> component should render initial UI properly 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-grXZZQ dJIsEv"
+  >
+    <h2>
+      <span>
+        CATEGORY/TITLE/1
+      </span>
+    </h2>
+    <div
+      class="sc-bcPKhP jhARyy"
+    >
+      <div
+        class="sc-hLclGa bXBury"
+      >
+        <img
+          alt="category/1/item/name/1"
+          src="category/1/item/imageUrl/1"
+        />
+        <div
+          class="sc-dkjKgF XfSlv"
+        >
+          <span>
+            category/1/item/name/1
+          </span>
+          <span>
+            $category/1/item/price/1
+          </span>
+        </div>
+        <button
+          class="sc-eDnVMP sc-gKHVLF krXTxx rLZXw"
+          type="button"
+        >
+          Add To Cart
+        </button>
+      </div>
+      <div
+        class="sc-hLclGa bXBury"
+      >
+        <img
+          alt="category/1/item/name/2"
+          src="category/1/item/imageUrl/2"
+        />
+        <div
+          class="sc-dkjKgF XfSlv"
+        >
+          <span>
+            category/1/item/name/2
+          </span>
+          <span>
+            $category/1/item/price/2
+          </span>
+        </div>
+        <button
+          class="sc-eDnVMP sc-gKHVLF krXTxx rLZXw"
+          type="button"
+        >
+          Add To Cart
+        </button>
+      </div>
+      <div
+        class="sc-hLclGa bXBury"
+      >
+        <img
+          alt="category/1/item/name/3"
+          src="category/1/item/imageUrl/3"
+        />
+        <div
+          class="sc-dkjKgF XfSlv"
+        >
+          <span>
+            category/1/item/name/3
+          </span>
+          <span>
+            $category/1/item/price/3
+          </span>
+        </div>
+        <button
+          class="sc-eDnVMP sc-gKHVLF krXTxx rLZXw"
+          type="button"
+        >
+          Add To Cart
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
