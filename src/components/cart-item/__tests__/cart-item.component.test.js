@@ -9,7 +9,7 @@ import {
   increaseItemQuantity,
   decreaseItemQuantity,
   clearItemFromCart,
-} from "../../../stubs/cart-item.stub";
+} from "./stubs/cart-item.stub";
 
 describe("<CartItem /> component", () => {
   it("should render cart-item UI elements", () => {

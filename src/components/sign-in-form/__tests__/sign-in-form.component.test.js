@@ -5,7 +5,7 @@ import { act, fireEvent, screen, waitFor } from "@testing-library/react";
 import SignInForm from "../sign-in-form.component";
 import renderWithProviders from "../../../utils/test.utils";
 
-import { userStub } from "../../../stubs/sign-in-user.stub";
+import { userStub } from "./stubs/sign-in-user.stub";
 import { startEmailSignIn } from "../../../redux/actions/user/user.action";
 
 const mockedUseDispatch = jest.fn();

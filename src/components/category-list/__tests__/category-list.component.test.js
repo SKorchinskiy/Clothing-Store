@@ -3,7 +3,7 @@ import { screen, render } from "@testing-library/react";
 
 import CategoryList from "../category-list.component";
 
-import { categoriesArray } from "../../../stubs/category.stub";
+import { categoriesArray } from "./stubs/category-list.stub";
 
 jest.mock("react-router-dom", () => {
   const actualModule = jest.requireActual("react-router-dom");

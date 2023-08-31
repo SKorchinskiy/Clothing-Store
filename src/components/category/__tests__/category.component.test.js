@@ -4,7 +4,7 @@ import { screen, render, act } from "@testing-library/react";
 
 import Category from "../category.component";
 
-import { category } from "../../../stubs/category.stub";
+import { category } from "./stubs/category.stub";
 
 const mockedUseNavigate = jest.fn();
 
