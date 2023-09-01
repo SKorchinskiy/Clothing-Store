@@ -2,7 +2,8 @@
 
 exports[`<SignInForm /> component should render initial UI properly 1`] = `
 <DocumentFragment>
-  <div
+  <form
+    aria-label="sign-up"
     class="sc-bcPKhP edaQst"
   >
     <div
@@ -15,20 +16,20 @@ exports[`<SignInForm /> component should render initial UI properly 1`] = `
         Sign Up with your email and password
       </p>
     </div>
-    <form
+    <div
       class="sc-grXZZQ kywDov"
     >
       <div
         class="sc-ftLKQv fhLrxm"
       >
         <label
-          for="signup-name"
+          for="sign-up-name"
         >
           name
         </label>
         <input
           class="sc-iBAaJG fZYlVh"
-          id="signup-name"
+          id="sign-up-name"
           name="name"
           placeholder="enter a name"
           required=""
@@ -40,13 +41,13 @@ exports[`<SignInForm /> component should render initial UI properly 1`] = `
         class="sc-ftLKQv fhLrxm"
       >
         <label
-          for="signup-email"
+          for="sign-up-email"
         >
           email
         </label>
         <input
           class="sc-iBAaJG fZYlVh"
-          id="signup-email"
+          id="sign-up-email"
           name="email"
           placeholder="enter an email"
           required=""
@@ -58,13 +59,13 @@ exports[`<SignInForm /> component should render initial UI properly 1`] = `
         class="sc-ftLKQv fhLrxm"
       >
         <label
-          for="signup-password"
+          for="sign-up-password"
         >
           password
         </label>
         <input
           class="sc-iBAaJG fZYlVh"
-          id="signup-password"
+          id="sign-up-password"
           name="password"
           placeholder="enter a password"
           required=""
@@ -76,13 +77,13 @@ exports[`<SignInForm /> component should render initial UI properly 1`] = `
         class="sc-ftLKQv fhLrxm"
       >
         <label
-          for="signup-confirmPassword"
+          for="sign-up-confirm-password"
         >
           confirm password
         </label>
         <input
           class="sc-iBAaJG fZYlVh"
-          id="signup-confirmPassword"
+          id="sign-up-confirm-password"
           name="confirmPassword"
           placeholder="confirm a password"
           required=""
@@ -92,11 +93,11 @@ exports[`<SignInForm /> component should render initial UI properly 1`] = `
       </div>
       <button
         class="sc-hLclGa sc-eDnVMP ibGimQ jZOKtP"
-        type="submit"
+        type="button"
       >
         Sign Up
       </button>
-    </form>
-  </div>
+    </div>
+  </form>
 </DocumentFragment>
 `;
