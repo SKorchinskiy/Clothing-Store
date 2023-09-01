@@ -41,7 +41,7 @@ export function signUpSuccess(currentUser) {
 }
 
 export function signOutSuccess() {
-  return createAction(USER_ACTION_TYPES.SIGN_USER_OUT, null);
+  return createAction(USER_ACTION_TYPES.SIGN_OUT_SUCCESS, null);
 }
 
 export function signInFailed(error) {
