@@ -8,32 +8,36 @@ exports[`<Header /> component should render initial structure properly 1`] = `
     <div
       class="sc-grXZZQ hHOjcc"
     >
-      <svg
-        style="cursor: pointer;"
+      <div
+        class="sc-dkjKgF glALSE"
       >
-        crown.svg
-      </svg>
+        <svg
+          style="cursor: pointer;"
+        >
+          crown.svg
+        </svg>
+      </div>
     </div>
     <div
       class="sc-grXZZQ hNCWnH"
     >
-      <a
+      <div
         class="sc-dkjKgF glALSE"
-        href="/"
       >
         Shop
-      </a>
-      <a
+      </div>
+      <div
         class="sc-dkjKgF glALSE"
-        href="/"
       >
         Sign In
-      </a>
+      </div>
       <div
         class="sc-jSwlEQ gVkLjW"
+        title="cart-icon-container"
       >
         <svg
           class="sc-eDnVMP eMDWkw"
+          title="shopping-bag"
         >
           shopping-bag.svg
         </svg>
