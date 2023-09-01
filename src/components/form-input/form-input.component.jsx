@@ -1,20 +1,20 @@
 import { Input, FormInputContainer } from "./form-input.styles";
 
 function FormInput({
+  id,
   label,
-  prefix,
   name,
-  type,
+  type = "text",
   value,
   placeholder,
-  required,
+  required = false,
   onChange,
 }) {
   return (
     <FormInputContainer>
-      <label htmlFor={`${prefix}-${name}`}>{label}</label>
+      <label htmlFor={id}>{label}</label>
       <Input
-        id={`${prefix}-${name}`}
+        id={id}
         type={type}
         required={required}
         value={value}

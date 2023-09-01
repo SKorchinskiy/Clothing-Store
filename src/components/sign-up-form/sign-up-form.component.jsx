@@ -38,15 +38,15 @@ function SignUpForm() {
   };
 
   return (
-    <SignUpFormContainer>
+    <SignUpFormContainer aria-label="sign-up">
       <SignUpFormHeader>
         <h3>I don't have an account</h3>
         <p>Sign Up with your email and password</p>
       </SignUpFormHeader>
-      <SignUpFormBody onSubmit={onFormSubmit}>
+      <SignUpFormBody>
         <FormInput
+          id={"sign-up-name"}
           label="name"
-          prefix="signup"
           type="text"
           name="name"
           value={formInput.name}
@@ -55,8 +55,8 @@ function SignUpForm() {
           onChange={onFormInputChange}
         />
         <FormInput
+          id={"sign-up-email"}
           label="email"
-          prefix="signup"
           type="email"
           name="email"
           value={formInput.email}
@@ -65,8 +65,8 @@ function SignUpForm() {
           onChange={onFormInputChange}
         />
         <FormInput
+          id={"sign-up-password"}
           label="password"
-          prefix="signup"
           type="password"
           name="password"
           value={formInput.password}
@@ -75,8 +75,8 @@ function SignUpForm() {
           onChange={onFormInputChange}
         />
         <FormInput
+          id={"sign-up-confirm-password"}
           label="confirm password"
-          prefix="signup"
           type="password"
           name="confirmPassword"
           value={formInput.confirmPassword}
@@ -84,7 +84,7 @@ function SignUpForm() {
           required={true}
           onChange={onFormInputChange}
         />
-        <Button type="submit" buttonType="default-btn">
+        <Button type="button" buttonType="default-btn" onClick={onFormSubmit}>
           Sign Up
         </Button>
       </SignUpFormBody>

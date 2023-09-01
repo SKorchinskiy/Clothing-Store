@@ -15,7 +15,13 @@ jest.mock("react-redux", () => {
   const actualModule = jest.requireActual("react-redux");
   return {
     ...actualModule,
-    useDispatch: () => mockedUseDispatch,
+    useDispatch: () => {
+      const actualUseDispatch = actualModule.useDispatch();
+      return (action) => {
+        actualUseDispatch(action);
+        mockedUseDispatch(action);
+      };
+    },
   };
 });
 
@@ -67,7 +73,7 @@ describe("<SignInForm /> component", () => {
     );
 
     const signUpButton = screen.getByText(/sign up/i, { selector: "button" });
-    await act(async () => await fireEvent.submit(signUpButton));
+    await act(async () => await userEvent.click(signUpButton));
 
     await waitFor(() =>
       expect(mockedUseDispatch).toHaveBeenCalledWith(

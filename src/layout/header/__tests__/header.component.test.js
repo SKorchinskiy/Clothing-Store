@@ -1,22 +1,21 @@
+import * as router from "react-router";
 import "@testing-library/jest-dom";
 import userEvent from "@testing-library/user-event";
-import { act, screen, waitFor } from "@testing-library/react";
-
-import Header from "../header.component";
+import { act, fireEvent, screen, waitFor } from "@testing-library/react";
 
 import renderWithProviders from "../../../utils/test.utils";
 
+import Header from "../header.component";
+
 const mockedUseNavigate = jest.fn();
 
-jest.mock("react-router-dom", () => {
-  const actualModule = jest.requireActual("react-router-dom");
-  return {
-    ...actualModule,
-    useNavigate: () => mockedUseNavigate,
-  };
-});
-
 describe("<Header /> component", () => {
+  beforeEach(() => {
+    jest
+      .spyOn(router, "useNavigate")
+      .mockImplementation(() => mockedUseNavigate);
+  });
+
   it("should render initial structure properly", () => {
     const { asFragment } = renderWithProviders(<Header />);
 
@@ -36,15 +35,13 @@ describe("<Header /> component", () => {
   });
 
   it("should navigate to home page when logo is clicked", async () => {
-    renderWithProviders(<Header />);
+    await act(async () => await renderWithProviders(<Header />));
 
-    const logoElement = screen.getByText("crown.svg");
+    const logoElement = await screen.findByText("crown.svg");
     await act(async () => await userEvent.click(logoElement));
 
-    await waitFor(() =>
-      expect(mockedUseNavigate).toHaveBeenCalledWith("/home")
-    );
     expect(mockedUseNavigate).toHaveBeenCalledTimes(1);
+    expect(mockedUseNavigate).toHaveBeenCalledWith("/home");
   });
 
   it("should navigate to shop page when appropriate link is clicked", async () => {
@@ -56,6 +53,7 @@ describe("<Header /> component", () => {
     await waitFor(() =>
       expect(mockedUseNavigate).toHaveBeenCalledWith("/shop")
     );
+    expect(mockedUseNavigate).toHaveBeenCalledTimes(1);
   });
 
   it("should navigate to sign-in page when appropriate link is clicked", async () => {
@@ -68,6 +66,7 @@ describe("<Header /> component", () => {
     await waitFor(() =>
       expect(mockedUseNavigate).toHaveBeenCalledWith("/auth")
     );
+    expect(mockedUseNavigate).toHaveBeenCalledTimes(1);
   });
 
   it("should open cart dropdown when shopping-bag icon is clicked", async () => {

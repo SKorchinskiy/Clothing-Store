@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-import { Link } from "react-router-dom";
-
 export const HeaderContainer = styled.div`
   display: flex;
   width: 100%;
@@ -24,7 +22,7 @@ export const HeaderContainerSide = styled.div`
   }
 `;
 
-export const HeaderContainerElement = styled(Link)`
+export const HeaderContainerElement = styled.div`
   display: flex;
   align-items: center;
   padding: 3px;

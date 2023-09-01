@@ -30,25 +30,42 @@ function Header() {
     dispatch(checkCurrentUserSession());
   }, [dispatch]);
 
-  const signOut = () => {
-    dispatch(startSignOut()).then(() => navigate("/auth"));
-  };
+  const goToPage = (page) => navigate(page);
 
   return (
     <HeaderContainer>
       <HeaderContainerSide $side="left">
-        <Logo onClick={() => navigate("/home")} style={{ cursor: "pointer" }} />
+        <HeaderContainerElement
+          onClick={() => {
+            goToPage("/home");
+          }}
+        >
+          <Logo style={{ cursor: "pointer" }} />
+        </HeaderContainerElement>
       </HeaderContainerSide>
       <HeaderContainerSide $side="right">
-        <HeaderContainerElement onClick={() => navigate("/shop")}>
+        <HeaderContainerElement
+          onClick={() => {
+            goToPage("/shop");
+          }}
+        >
           Shop
         </HeaderContainerElement>
         {currentUser ? (
-          <HeaderContainerElement onClick={signOut}>
+          <HeaderContainerElement
+            onClick={() => {
+              dispatch(startSignOut());
+              goToPage("/auth");
+            }}
+          >
             Sign Out
           </HeaderContainerElement>
         ) : (
-          <HeaderContainerElement onClick={() => navigate("/auth")}>
+          <HeaderContainerElement
+            onClick={() => {
+              goToPage("/auth");
+            }}
+          >
             Sign In
           </HeaderContainerElement>
         )}

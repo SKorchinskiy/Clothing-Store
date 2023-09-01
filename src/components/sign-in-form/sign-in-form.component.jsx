@@ -42,15 +42,15 @@ function SignInForm() {
   };
 
   return (
-    <SignInFormContainer>
+    <SignInFormContainer aria-label="sign-in">
       <SignInFormHeader>
         <h3>I already have an account</h3>
         <p>Sign in with your email and password</p>
       </SignInFormHeader>
       <SignInFormBody>
         <FormInput
+          id={"sign-in-email"}
           label="email"
-          prefix="signin"
           name="email"
           type="email"
           value={formInput.email}
@@ -59,8 +59,8 @@ function SignInForm() {
           onChange={onFormInputChange}
         />
         <FormInput
+          id={"sign-in-password"}
           label="password"
-          prefix="signin"
           name="password"
           type="password"
           value={formInput.password}

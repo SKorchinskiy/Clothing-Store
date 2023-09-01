@@ -3,6 +3,7 @@
 exports[`<SignInForm /> component should render UI with user data in the form 1`] = `
 <DocumentFragment>
   <form
+    aria-label="sign-in"
     class="sc-grXZZQ gQFiYD"
   >
     <div
@@ -22,13 +23,13 @@ exports[`<SignInForm /> component should render UI with user data in the form 1`
         class="sc-pqitP jplaYo"
       >
         <label
-          for="signin-email"
+          for="sign-in-email"
         >
           email
         </label>
         <input
           class="sc-ftLKQv hgpCSN"
-          id="signin-email"
+          id="sign-in-email"
           name="email"
           placeholder="enter an email"
           required=""
@@ -40,13 +41,13 @@ exports[`<SignInForm /> component should render UI with user data in the form 1`
         class="sc-pqitP jplaYo"
       >
         <label
-          for="signin-password"
+          for="sign-in-password"
         >
           password
         </label>
         <input
           class="sc-ftLKQv hgpCSN"
-          id="signin-password"
+          id="sign-in-password"
           name="password"
           placeholder="enter a password"
           required=""
@@ -78,6 +79,7 @@ exports[`<SignInForm /> component should render UI with user data in the form 1`
 exports[`<SignInForm /> component should render initial UI properly 1`] = `
 <DocumentFragment>
   <form
+    aria-label="sign-in"
     class="sc-grXZZQ gQFiYD"
   >
     <div
@@ -97,13 +99,13 @@ exports[`<SignInForm /> component should render initial UI properly 1`] = `
         class="sc-pqitP jplaYo"
       >
         <label
-          for="signin-email"
+          for="sign-in-email"
         >
           email
         </label>
         <input
           class="sc-ftLKQv hgpCSN"
-          id="signin-email"
+          id="sign-in-email"
           name="email"
           placeholder="enter an email"
           required=""
@@ -115,13 +117,13 @@ exports[`<SignInForm /> component should render initial UI properly 1`] = `
         class="sc-pqitP jplaYo"
       >
         <label
-          for="signin-password"
+          for="sign-in-password"
         >
           password
         </label>
         <input
           class="sc-ftLKQv hgpCSN"
-          id="signin-password"
+          id="sign-in-password"
           name="password"
           placeholder="enter a password"
           required=""
