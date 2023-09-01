@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-export const SignUpFormContainer = styled.div`
+export const SignUpFormContainer = styled.form`
   margin-bottom: 50px;
 `;
 
-export const SignUpFormBody = styled.form`
+export const SignUpFormBody = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
