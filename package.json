@@ -64,5 +64,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "msw": "^1.2.5"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
