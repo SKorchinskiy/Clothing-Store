@@ -2,12 +2,27 @@ import "./cart-item.styles.scss";
 
 import { memo } from "react";
 
+export type CartItemType = {
+  id: number;
+  imageUrl: string;
+  name: string;
+  quantity: number;
+  price: number;
+};
+
+type CartItemInputType = {
+  cartItem: CartItemType;
+  increaseItemQuantity: Function;
+  decreaseItemQuantity: Function;
+  clearItemFromCart: Function;
+};
+
 function CartItem({
   cartItem,
   increaseItemQuantity,
   decreaseItemQuantity,
   clearItemFromCart,
-}) {
+}: CartItemInputType) {
   const { imageUrl, name, quantity, price } = cartItem;
 
   return (

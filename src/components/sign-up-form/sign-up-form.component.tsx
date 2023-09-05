@@ -6,7 +6,7 @@ import {
 
 import { useState } from "react";
 
-import Button from "../button/button.component";
+import Button, { ButtonType } from "../button/button.component";
 import FormInput from "../form-input/form-input.component";
 import { useDispatch } from "react-redux";
 import { startEmailSignUp } from "../../redux/actions/user/user.action";
@@ -23,12 +23,12 @@ function SignUpForm() {
 
   const [formInput, setFormInput] = useState(defaultFormInput);
 
-  const onFormInputChange = (event) => {
+  const onFormInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormInput({ ...formInput, [name]: value });
   };
 
-  const onFormSubmit = (event) => {
+  const onFormSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     const { name, email, password, confirmPassword } = formInput;
     if (password !== confirmPassword) {
@@ -84,7 +84,11 @@ function SignUpForm() {
           required={true}
           onChange={onFormInputChange}
         />
-        <Button type="button" buttonType="default-btn" onClick={onFormSubmit}>
+        <Button
+          type="button"
+          buttonType={ButtonType.default}
+          onClick={onFormSubmit}
+        >
           Sign Up
         </Button>
       </SignUpFormBody>

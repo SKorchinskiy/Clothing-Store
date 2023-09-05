@@ -3,13 +3,24 @@ import {
   ProductItemContainer,
 } from "./product-item.styles";
 
-import Button from "../button/button.component";
+import Button, { ButtonType } from "../button/button.component";
 
 import { selectCartItems } from "../../redux/selectors/cart.selector";
 import { addToCartAction } from "../../redux/actions/cart/cart.action";
 import { useDispatch, useSelector } from "react-redux";
 
-function ProductItem({ product }) {
+export type ProductType = {
+  id: number;
+  name: string;
+  imageUrl: string;
+  price: number;
+};
+
+type ProductItemInputType = {
+  product: ProductType;
+};
+
+function ProductItem({ product }: ProductItemInputType) {
   const { name, imageUrl, price } = product;
 
   const dispatch = useDispatch();
@@ -24,7 +35,7 @@ function ProductItem({ product }) {
         <span>{name}</span>
         <span>${price}</span>
       </ProductItemDetails>
-      <Button type="button" buttonType="invert-btn" onClick={addToCart}>
+      <Button type="button" buttonType={ButtonType.invert} onClick={addToCart}>
         Add To Cart
       </Button>
     </ProductItemContainer>

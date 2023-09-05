@@ -6,7 +6,17 @@ import {
 
 import { useNavigate } from "react-router-dom";
 
-function Category({ category: { title, imageUrl } }) {
+export type CategoryType = {
+  id: number;
+  title: string;
+  imageUrl: string;
+};
+
+type CategoryInputType = {
+  category: CategoryType;
+};
+
+function Category({ category: { title, imageUrl } }: CategoryInputType) {
   const navigate = useNavigate();
 
   const goToCategory = () => navigate(`/category/${title}`);
