@@ -5,7 +5,13 @@ import {
   DropdownItemContainer,
 } from "./dropdown-item.styles";
 
-function DropdownItem({ cartItem }) {
+import { CartItemType } from "../cart-item/cart-item.component";
+
+type DropdownItemInputType = {
+  cartItem: CartItemType;
+};
+
+function DropdownItem({ cartItem }: DropdownItemInputType) {
   return (
     <DropdownItemContainer key={cartItem.id}>
       <img src={cartItem.imageUrl} alt={cartItem.name} />
