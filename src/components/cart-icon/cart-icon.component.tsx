@@ -8,6 +8,10 @@ import { toggleCartIsOpen } from "../../redux/actions/cart/cart.action";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
+export type ShoppingIconProps = {
+  title: string;
+};
+
 function CartIcon() {
   const isCartOpen = useSelector(selectIsCartOpen);
   const itemsCount = useSelector(selectCartItemsCount);
