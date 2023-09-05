@@ -3,37 +3,50 @@ import {
   CardElementContainer,
 } from "./payment-form.styles";
 
-import Button from "../button/button.component";
+import Button, { ButtonType } from "../button/button.component";
 import { useElements, useStripe } from "@stripe/react-stripe-js";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../redux/selectors/user.selector";
 
-export default function PaymentForm({ clientSecret }) {
+type PaymentFormProps = {
+  clientSecret: string;
+};
+
+export default function PaymentForm({ clientSecret }: PaymentFormProps) {
   const stripe = useStripe();
   const elements = useElements();
 
   const currentUser = useSelector(selectCurrentUser);
 
-  const paymentHandler = async (event) => {
+  const paymentHandler = async (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     event.preventDefault();
     if (!stripe || !elements) {
       return;
     }
     const name = currentUser?.displayName ?? "Guest";
-    stripe.confirmCardPayment(clientSecret, {
-      payment_method: {
-        card: elements.getElement("card"),
-        billing_details: {
-          name,
+    const cardElement = elements.getElement("card");
+    if (cardElement) {
+      stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: cardElement,
+          billing_details: {
+            name,
+          },
         },
-      },
-    });
+      });
+    }
   };
 
   return (
     <PaymentFormContainer>
       <CardElementContainer />
-      <Button buttonType="default-btn" onClick={paymentHandler}>
+      <Button
+        type="button"
+        buttonType={ButtonType.default}
+        onClick={paymentHandler}
+      >
         Pay now
       </Button>
     </PaymentFormContainer>
