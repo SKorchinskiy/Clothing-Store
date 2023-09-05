@@ -7,7 +7,7 @@ import {
 
 import { useState } from "react";
 
-import Button from "../button/button.component";
+import Button, { ButtonType } from "../button/button.component";
 import FormInput from "../form-input/form-input.component";
 import { useDispatch } from "react-redux";
 
@@ -26,7 +26,9 @@ function SignInForm() {
 
   const [formInput, setFormInput] = useState(defaultFormInput);
 
-  const onFormSubmit = (event) => {
+  const onFormSubmit = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     event.preventDefault();
     const { email, password } = formInput;
     dispatch(startEmailSignIn(email, password));
@@ -36,7 +38,7 @@ function SignInForm() {
     dispatch(startGoogleSignIn());
   };
 
-  const onFormInputChange = (event) => {
+  const onFormInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     setFormInput({ ...formInput, [name]: value });
   };
@@ -69,12 +71,16 @@ function SignInForm() {
           onChange={onFormInputChange}
         />
         <SignInOptions>
-          <Button type="button" buttonType="default-btn" onClick={onFormSubmit}>
+          <Button
+            type="button"
+            buttonType={ButtonType.default}
+            onClick={onFormSubmit}
+          >
             Sign In
           </Button>
           <Button
             type="button"
-            buttonType="google-btn"
+            buttonType={ButtonType.google}
             onClick={signInWithGoogle}
           >
             Sign In with Google
