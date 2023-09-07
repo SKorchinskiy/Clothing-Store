@@ -1,4 +1,4 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp, FirebaseOptions } from "firebase/app";
 
 import { getFirestore } from "firebase/firestore";
 
@@ -12,9 +12,11 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   onAuthStateChanged,
+  User,
 } from "firebase/auth";
+import { SignInUser, SignUpUser } from "../redux/actions/user/user.action";
 
-const firebaseConfig = {
+const firebaseConfig: FirebaseOptions = {
   apiKey: "AIzaSyAg3b7jZ-DTcCtuQiBMm51LBpTKHvLxYc0",
   authDomain: "clothing-shop-db-1d68a.firebaseapp.com",
   projectId: "clothing-shop-db-1d68a",
@@ -33,7 +35,9 @@ googleAuth.setCustomParameters({
   prompt: "select_account",
 });
 
-export async function signUpUserByEmail(userData) {
+export async function signUpUserByEmail(
+  userData: SignUpUser
+): Promise<User | void> {
   try {
     const { name, email, password } = userData;
     const { user } = await createUserWithEmailAndPassword(
@@ -41,35 +45,48 @@ export async function signUpUserByEmail(userData) {
       email,
       password
     );
-    await sendEmailVerification(auth.currentUser);
-    await updateProfile(auth.currentUser, {
+
+    await sendEmailVerification(user);
+    await updateProfile(user, {
       displayName: name,
     });
+
     return user;
   } catch (error) {
-    console.log(`An error occured while registering user! ${error.message}`);
+    console.log(`An error occured while registering user! ${error}`);
   }
 }
 
-export async function signInUserByEmail({ email, password }) {
+export async function signInUserByEmail({
+  email,
+  password,
+}: SignInUser): Promise<User | void> {
   try {
     const { user } = await signInWithEmailAndPassword(auth, email, password);
     return user;
   } catch (error) {
-    console.log(`An error occured! ${error.message}`);
+    console.log(`An error occured! ${error}`);
   }
 }
 
-export async function signInUserWithGoogle() {
-  const { user } = await signInWithPopup(auth, googleAuth);
-  return user;
+export async function signInUserWithGoogle(): Promise<User | void> {
+  try {
+    const { user } = await signInWithPopup(auth, googleAuth);
+    return user;
+  } catch (error) {
+    console.log(`An error occured! ${error}`);
+  }
 }
 
-export async function signOutUser() {
-  await signOut(auth);
+export async function signOutUser(): Promise<void> {
+  try {
+    await signOut(auth);
+  } catch (error) {
+    console.log(`An error occured while signing out! ${error}`);
+  }
 }
 
-export function getCurrentUser() {
+export function getCurrentUser(): Promise<User | null> {
   return new Promise((resolve, reject) => {
     const unsubscribe = onAuthStateChanged(
       auth,

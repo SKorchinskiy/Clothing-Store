@@ -2,9 +2,10 @@ import {
   applyMiddleware,
   compose,
   legacy_createStore as createStore,
+  Middleware,
 } from "redux";
 import storage from "redux-persist/lib/storage";
-import { persistReducer, persistStore } from "redux-persist";
+import { persistReducer, persistStore, PersistConfig } from "redux-persist";
 import createSagaMiddleware from "redux-saga";
 
 import { devToolsEnhancer } from "@redux-devtools/extension";
@@ -12,7 +13,13 @@ import { devToolsEnhancer } from "@redux-devtools/extension";
 import rootSaga from "../sagas/root.saga";
 import rootReducer from "../reducers/root.reducer";
 
-const persistConfig = {
+export type RootState = ReturnType<typeof rootReducer>;
+
+export type CustomPersistConfig = PersistConfig<RootState> & {
+  whitelist: [keyof RootState];
+};
+
+const persistConfig: CustomPersistConfig = {
   key: "root",
   storage,
   whitelist: ["cart"],
@@ -20,7 +27,7 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const sagaMiddleware = createSagaMiddleware();
-const middlewares = [sagaMiddleware];
+const middlewares: Middleware[] = [sagaMiddleware];
 
 const store = createStore(
   persistedReducer,
