@@ -1,0 +1,4 @@
+export enum CART_ACTION_TYPES {
+  UPDATE_CART_ITEMS = "cart/UPDATE_CART_ITEMS",
+  TOGGLE_CART = "cart/TOGGLE_CART",
+}
