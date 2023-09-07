@@ -14,6 +14,7 @@ export type ProductType = {
   name: string;
   imageUrl: string;
   price: number;
+  quantity: number;
 };
 
 type ProductItemInputType = {
