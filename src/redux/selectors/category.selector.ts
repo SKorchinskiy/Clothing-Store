@@ -1,6 +1,8 @@
 import { createSelector } from "reselect";
+import { CategoryState } from "../reducers/category/category.reducer";
+import { RootState } from "../store/store";
 
-const selectCategorySlice = (state) => state.category;
+const selectCategorySlice = (state: RootState): CategoryState => state.category;
 
 export const selectCategoryTitle = createSelector(
   [selectCategorySlice],
