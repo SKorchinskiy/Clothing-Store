@@ -6,7 +6,7 @@ import { server } from "../../mocks/mock-service-worker";
 import App from "../../App.";
 
 jest.mock("../../utils/firebase.utils");
-jest.mock("../../configs/firebase.config.js");
+jest.mock("../../configs/firebase.config");
 
 const userStub = {
   name: "test",
@@ -69,7 +69,7 @@ describe("<App /> component", () => {
   }, 3000);
 
   it("should update UI when user sign up", async () => {
-    await waitFor(async () => await render(<App />));
+    render(<App />);
 
     expect.assertions(20);
 
@@ -130,7 +130,10 @@ describe("<App /> component", () => {
 
     // check if sign in was toggled to sign out
     const signOutElement = await screen.findByText(/^sign out$/i);
-    expect(signOutElement).toBeInTheDocument();
+    await waitFor(() => expect(signOutElement).toBeInTheDocument(), {
+      timeout: 10000,
+      interval: 1000,
+    });
 
     // check if was redirected from /auth to /home page
     expect(mockUseNavigate).toBeCalledWith("/home");

@@ -18,7 +18,7 @@ import { fetchCurrentCategoryStart } from "../../redux/actions/category/category
 import Loader from "../../components/loader/loader.component";
 
 function Category() {
-  const { categoryName } = useParams();
+  const { categoryName } = useParams<string>();
   const dispatch = useDispatch();
 
   const title = useSelector(selectCategoryTitle);
@@ -26,7 +26,9 @@ function Category() {
   const isLoading = useSelector(selectIsCategoryLoading);
 
   useEffect(() => {
-    dispatch(fetchCurrentCategoryStart(categoryName));
+    if (categoryName) {
+      dispatch(fetchCurrentCategoryStart(categoryName));
+    }
   }, [categoryName, dispatch]);
 
   return (
