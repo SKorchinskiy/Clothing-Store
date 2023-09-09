@@ -1,4 +1,8 @@
-import "./cart-item.styles.scss";
+import {
+  ItemDetails,
+  CartItemElement,
+  CartItemContainer,
+} from "./cart-item.styles";
 
 import { memo } from "react";
 
@@ -10,7 +14,7 @@ export type CartItemType = {
   price: number;
 };
 
-type CartItemInputType = {
+type CartItemProps = {
   cartItem: CartItemType;
   increaseItemQuantity: Function;
   decreaseItemQuantity: Function;
@@ -22,15 +26,15 @@ function CartItem({
   increaseItemQuantity,
   decreaseItemQuantity,
   clearItemFromCart,
-}: CartItemInputType) {
+}: CartItemProps) {
   const { imageUrl, name, quantity, price } = cartItem;
 
   return (
-    <div className="cart-item-container">
+    <CartItemContainer>
       <img src={imageUrl} alt={name} />
-      <div className="item-details">
-        <div className="cart-item-element">{name}</div>
-        <div className="cart-item-element">
+      <ItemDetails>
+        <CartItemElement>{name}</CartItemElement>
+        <CartItemElement>
           <div className="arrow" onClick={() => decreaseItemQuantity(cartItem)}>
             &#10092;
           </div>
@@ -38,18 +42,18 @@ function CartItem({
           <div className="arrow" onClick={() => increaseItemQuantity(cartItem)}>
             &#10093;
           </div>
-        </div>
-        <div className="cart-item-element">${price}</div>
-        <div className="cart-item-element">
+        </CartItemElement>
+        <CartItemElement>${price}</CartItemElement>
+        <CartItemElement>
           <div
             className="remove-btn"
             onClick={() => clearItemFromCart(cartItem)}
           >
             &#10005;
           </div>
-        </div>
-      </div>
-    </div>
+        </CartItemElement>
+      </ItemDetails>
+    </CartItemContainer>
   );
 }
 

@@ -1,18 +1,13 @@
-.cart-item-container {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-  text-align: center;
-  width: 100%;
-  margin-bottom: 20px;
-  font-family: "Amatic SC";
-  font-size: 24px;
-  letter-spacing: 2px;
+import styled from "styled-components";
 
+export const ItemDetails = styled.div`
   .item-details {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
   }
+`;
 
+export const CartItemElement = styled.div`
   .cart-item-element {
     display: flex;
     justify-content: center;
@@ -27,10 +22,21 @@
       cursor: pointer;
     }
   }
+`;
+
+export const CartItemContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 20px;
+  font-family: "Amatic SC";
+  font-size: 24px;
+  letter-spacing: 2px;
 
   img {
     width: 90px;
     margin-left: auto;
     margin-right: auto;
   }
-}
+`;
