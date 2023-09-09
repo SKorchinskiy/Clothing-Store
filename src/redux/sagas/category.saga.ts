@@ -7,25 +7,27 @@ import {
   fetchCurrentCategorySuccess,
   fetchCurrentCategoryFailed,
 } from "../actions/category/category.action";
+import { SagaIterator } from "redux-saga";
 
-export default function* categorySaga() {
-  const watcherSagas = [fetchCurrentCategoryWatcher];
-  yield all(watcherSagas.map(call));
+import type { FetchCategoryStart } from "../actions/category/category.action";
+
+export default function* categorySaga(): SagaIterator {
+  yield all([call(fetchCurrentCategoryWatcher)]);
 }
 
-function* fetchCurrentCategoryWatcher() {
+function* fetchCurrentCategoryWatcher(): SagaIterator {
   yield takeLatest(
     CATEGORY_ACTION_TYPES.FETCH_CURRENT_CATEGORY_START,
     fetchCurrentCategory
   );
 }
 
-function* fetchCurrentCategory(action) {
+function* fetchCurrentCategory(action: FetchCategoryStart): SagaIterator {
   const categoryName = action.payload;
   try {
-    const category = yield getProductsFromCategory(categoryName);
+    const category = yield call(getProductsFromCategory, categoryName);
     yield put(fetchCurrentCategorySuccess(category));
   } catch (error) {
-    yield put(fetchCurrentCategoryFailed(error));
+    yield put(fetchCurrentCategoryFailed(error as Error));
   }
 }
