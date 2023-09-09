@@ -12,11 +12,11 @@ export type CategoryType = {
   imageUrl: string;
 };
 
-type CategoryInputType = {
+type CategoryProps = {
   category: CategoryType;
 };
 
-function Category({ category: { title, imageUrl } }: CategoryInputType) {
+function Category({ category: { title, imageUrl } }: CategoryProps) {
   const navigate = useNavigate();
 
   const goToCategory = () => navigate(`/category/${title}`);
