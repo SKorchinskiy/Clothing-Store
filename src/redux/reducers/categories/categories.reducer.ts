@@ -1,5 +1,5 @@
 import { AnyAction } from "redux";
-import { Category } from "../../actions/category/category.type";
+import type { CategoryType } from "../../../components/category/category.component";
 
 import {
   fetchCategoriesStart,
@@ -7,7 +7,7 @@ import {
   fetchCategoriesFailed,
 } from "../../actions/categories/categories.action";
 export type CategoriesState = {
-  categories: Category[];
+  categories: CategoryType[];
   isLoading: boolean;
   error: Error | null;
 };
