@@ -1,6 +1,6 @@
 import { AnyAction } from "redux";
 
-import { CategoryItem } from "../../actions/category/category.type";
+import type { ProductType } from "../../../components/product-item/product-item.component";
 
 import {
   fetchCurrentCategoryStart,
@@ -10,7 +10,7 @@ import {
 
 export type CategoryState = {
   readonly title: string;
-  readonly items: CategoryItem[];
+  readonly items: ProductType[];
   readonly isLoading: boolean;
   readonly error: Error | null;
 };

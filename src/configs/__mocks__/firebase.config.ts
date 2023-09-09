@@ -1,4 +1,4 @@
-let currentUser = null;
+let currentUser: any = null;
 
 export const db = "testDb";
 export const getCurrentUser = () => currentUser;

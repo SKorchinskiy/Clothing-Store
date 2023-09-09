@@ -1,4 +1,4 @@
-import { Category } from "../category/category.type";
+import type { CategoryType as Category } from "../../../components/category/category.component";
 import {
   Action,
   ActionWithPayload,

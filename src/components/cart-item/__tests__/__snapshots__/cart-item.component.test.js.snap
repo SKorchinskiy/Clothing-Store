@@ -3,22 +3,22 @@
 exports[`<CartItem /> component should render cart-item UI elements 1`] = `
 <DocumentFragment>
   <div
-    class="cart-item-container"
+    class="sc-dkjKgF jouCEI"
   >
     <img
       alt="item 1"
       src="testUrl"
     />
     <div
-      class="item-details"
+      class="sc-bcPKhP qrmOf"
     >
       <div
-        class="cart-item-element"
+        class="sc-grXZZQ bkNFIY"
       >
         item 1
       </div>
       <div
-        class="cart-item-element"
+        class="sc-grXZZQ bkNFIY"
       >
         <div
           class="arrow"
@@ -33,12 +33,12 @@ exports[`<CartItem /> component should render cart-item UI elements 1`] = `
         </div>
       </div>
       <div
-        class="cart-item-element"
+        class="sc-grXZZQ bkNFIY"
       >
         $140
       </div>
       <div
-        class="cart-item-element"
+        class="sc-grXZZQ bkNFIY"
       >
         <div
           class="remove-btn"

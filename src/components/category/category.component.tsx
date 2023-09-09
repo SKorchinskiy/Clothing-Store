@@ -1,3 +1,4 @@
+import { ProductType } from "../product-item/product-item.component";
 import {
   BackgroundImage,
   CategoryContainer,
@@ -10,13 +11,16 @@ export type CategoryType = {
   id: number;
   title: string;
   imageUrl: string;
+  items: ProductType[];
 };
 
-type CategoryInputType = {
-  category: CategoryType;
+export type CategoryWithoutItems = Omit<CategoryType, "items">;
+
+type CategoryProps = {
+  category: CategoryWithoutItems;
 };
 
-function Category({ category: { title, imageUrl } }: CategoryInputType) {
+function Category({ category: { title, imageUrl } }: CategoryProps) {
   const navigate = useNavigate();
 
   const goToCategory = () => navigate(`/category/${title}`);

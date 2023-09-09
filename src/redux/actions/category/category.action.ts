@@ -1,6 +1,6 @@
 import { createAction, withMatcher } from "../create-action.helper";
 import { ActionWithPayload } from "../create-action.helper";
-import type { Category } from "./category.type";
+import type { CategoryType as Category } from "../../../components/category/category.component";
 import { CATEGORY_ACTION_TYPES } from "./category.type";
 
 export type FetchCategoryStart = ActionWithPayload<

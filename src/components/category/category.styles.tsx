@@ -25,11 +25,11 @@ export const CategoryBodyContainer = styled.div`
   }
 `;
 
-type BackgroundImagePropsType = {
+type BackgroundImageProps = {
   $imageUrl: string;
 };
 
-export const BackgroundImage = styled.div<BackgroundImagePropsType>`
+export const BackgroundImage = styled.div<BackgroundImageProps>`
   width: 100%;
   height: 100%;
   background: url(${({ $imageUrl }) => $imageUrl});

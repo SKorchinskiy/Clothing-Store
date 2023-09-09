@@ -1,6 +1,9 @@
 import styled from "styled-components";
-import { ShoppingIconProps } from "./cart-icon.component";
 import { ReactComponent as ShoppingSvg } from "../../assets/shopping-bag.svg";
+
+export type ShoppingIconProps = {
+  title: string;
+};
 
 export const ItemCount = styled.span`
   position: absolute;

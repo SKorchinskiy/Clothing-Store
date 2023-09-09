@@ -30,7 +30,7 @@ function Header() {
     dispatch(checkCurrentUserSession());
   }, [dispatch]);
 
-  const goToPage = (page) => navigate(page);
+  const goToPage = (page: string) => navigate(page);
 
   return (
     <HeaderContainer>

@@ -5,6 +5,7 @@ import {
   withMatcher,
 } from "../create-action.helper";
 import { CartItem } from "../../reducers/cart/cart.reducer";
+import { ProductType } from "../../../components/product-item/product-item.component";
 
 export type UpdateCartItems = ActionWithPayload<
   CART_ACTION_TYPES.UPDATE_CART_ITEMS,
@@ -16,12 +17,12 @@ export const updateCartItems = withMatcher(
     createAction(CART_ACTION_TYPES.UPDATE_CART_ITEMS, updatedCartItems)
 );
 
-export function addToCartAction(cartItems: CartItem[], itemToAdd: CartItem) {
+export function addToCartAction(cartItems: CartItem[], itemToAdd: ProductType) {
   const updatedCartItems = addToCart(cartItems, itemToAdd);
   return updateCartItems(updatedCartItems);
 }
 
-function addToCart(cartItems: CartItem[], itemToAdd: CartItem) {
+function addToCart(cartItems: CartItem[], itemToAdd: ProductType) {
   const itemExists = cartItems.some((cartItem) => cartItem.id === itemToAdd.id);
   if (itemExists) {
     return cartItems.map((cartItem) =>

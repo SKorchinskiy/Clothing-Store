@@ -12,7 +12,9 @@ import {
   clearItemFromCartAction,
 } from "../../redux/actions/cart/cart.action";
 
-import CartItem from "../../components/cart-item/cart-item.component";
+import CartItem, {
+  CartItemType,
+} from "../../components/cart-item/cart-item.component";
 
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -41,19 +43,23 @@ function Checkout() {
       body: JSON.stringify({ amount: totalPrice }),
     })
       .then((response) => response.json())
-      .then((data) => setClientSecret(data.clientSecret));
+      .then((data) => {
+        return setClientSecret(data.clientSecret);
+      });
   }, [totalPrice]);
 
   const increaseItemQuantity = useCallback(
-    (cartItem) => dispatch(addToCartAction(cartItems, cartItem)),
+    (cartItem: CartItemType) => dispatch(addToCartAction(cartItems, cartItem)),
     [cartItems, dispatch]
   );
   const decreaseItemQuantity = useCallback(
-    (cartItem) => dispatch(removeFromCartAction(cartItems, cartItem)),
+    (cartItem: CartItemType) =>
+      dispatch(removeFromCartAction(cartItems, cartItem)),
     [cartItems, dispatch]
   );
   const clearItemFromCart = useCallback(
-    (cartItem) => dispatch(clearItemFromCartAction(cartItems, cartItem)),
+    (cartItem: CartItemType) =>
+      dispatch(clearItemFromCartAction(cartItems, cartItem)),
     [cartItems, dispatch]
   );
 

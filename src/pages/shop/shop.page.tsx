@@ -27,9 +27,7 @@ function Shop() {
         <Loader />
       ) : (
         categories.map((category) => {
-          return (
-            <CategoryPreview key={category.categoryId} category={category} />
-          );
+          return <CategoryPreview key={category.id} category={category} />;
         })
       )}
     </CategoriesContainer>

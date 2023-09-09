@@ -1,21 +1,17 @@
 import { CategoryListContainer } from "./category-list.styles";
 
-import Category from "../category/category.component";
+import Category, {
+  type CategoryWithoutItems,
+} from "../category/category.component";
 
-type CategoryType = {
-  id: number;
-  title: string;
-  imageUrl: string;
+type CategoryListProps = {
+  categories: CategoryWithoutItems[];
 };
 
-type CategoryListInputType = {
-  categories: Array<CategoryType>;
-};
-
-function CategoryList({ categories }: CategoryListInputType) {
+function CategoryList({ categories }: CategoryListProps) {
   return (
     <CategoryListContainer>
-      {categories.map((category: CategoryType) => (
+      {categories.map((category: CategoryWithoutItems) => (
         <Category key={category.id} category={category} />
       ))}
     </CategoryListContainer>
