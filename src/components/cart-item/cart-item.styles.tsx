@@ -1,26 +1,22 @@
 import styled from "styled-components";
 
 export const ItemDetails = styled.div`
-  .item-details {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-  }
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 `;
 
 export const CartItemElement = styled.div`
-  .cart-item-element {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    .arrow {
-      cursor: pointer;
-      user-select: none;
-    }
+  .arrow {
+    cursor: pointer;
+    user-select: none;
+  }
 
-    .remove-btn {
-      cursor: pointer;
-    }
+  .remove-btn {
+    cursor: pointer;
   }
 `;
 
