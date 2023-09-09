@@ -1,3 +1,4 @@
+import { ProductType } from "../product-item/product-item.component";
 import {
   BackgroundImage,
   CategoryContainer,
@@ -10,10 +11,13 @@ export type CategoryType = {
   id: number;
   title: string;
   imageUrl: string;
+  items: ProductType[];
 };
 
+export type CategoryWithoutItems = Omit<CategoryType, "items">;
+
 type CategoryProps = {
-  category: CategoryType;
+  category: CategoryWithoutItems;
 };
 
 function Category({ category: { title, imageUrl } }: CategoryProps) {

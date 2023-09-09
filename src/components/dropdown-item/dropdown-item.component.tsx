@@ -7,11 +7,11 @@ import {
 
 import { CartItemType } from "../cart-item/cart-item.component";
 
-type DropdownItemInputType = {
+type DropdownItemProps = {
   cartItem: CartItemType;
 };
 
-function DropdownItem({ cartItem }: DropdownItemInputType) {
+function DropdownItem({ cartItem }: DropdownItemProps) {
   return (
     <DropdownItemContainer key={cartItem.id}>
       <img src={cartItem.imageUrl} alt={cartItem.name} />

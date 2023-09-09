@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+type HeaderSide = {
+  $side: string;
+};
+
 export const HeaderContainer = styled.div`
   display: flex;
   width: 100%;
@@ -11,7 +15,7 @@ export const HeaderContainer = styled.div`
   }
 `;
 
-export const HeaderContainerSide = styled.div`
+export const HeaderContainerSide = styled.div<HeaderSide>`
   width: 50%;
   display: flex;
   padding: 20px 0px;

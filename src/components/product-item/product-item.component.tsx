@@ -14,14 +14,13 @@ export type ProductType = {
   name: string;
   imageUrl: string;
   price: number;
-  quantity: number;
 };
 
-type ProductItemInputType = {
+type ProductItemProps = {
   product: ProductType;
 };
 
-function ProductItem({ product }: ProductItemInputType) {
+function ProductItem({ product }: ProductItemProps) {
   const { name, imageUrl, price } = product;
 
   const dispatch = useDispatch();

@@ -6,21 +6,15 @@ import {
 import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 
-import ProductItem, {
-  ProductType,
-} from "../product-item/product-item.component";
+import ProductItem from "../product-item/product-item.component";
 
-type CategoryPreviewType = {
-  id: number;
-  title: string;
-  items: Array<ProductType>;
+import type { CategoryType } from "../category/category.component";
+
+type CategoryPreviewProps = {
+  category: CategoryType;
 };
 
-type CategoryPreviewInputType = {
-  category: CategoryPreviewType;
-};
-
-function CategoryPreview({ category }: CategoryPreviewInputType) {
+function CategoryPreview({ category }: CategoryPreviewProps) {
   const { title, items } = category;
 
   const navigate = useNavigate();
