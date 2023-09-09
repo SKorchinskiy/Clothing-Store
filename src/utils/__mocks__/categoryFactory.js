@@ -10,7 +10,7 @@ function generateRandomCategoryName() {
 
 export function categoryFactory() {
   return (categoryName = generateRandomCategoryName()) => ({
-    categoryId: getRandomNumber(),
+    id: getRandomNumber(),
     title: `mock ${categoryName}`,
     items: [
       {
