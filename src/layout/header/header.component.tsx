@@ -8,7 +8,7 @@ import { ReactComponent as Logo } from "../../assets/crown.svg";
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -18,6 +18,7 @@ import {
   checkCurrentUserSession,
   startSignOut,
 } from "../../redux/actions/user/user.action";
+import { toggleCartIsOpen } from "../../redux/actions/cart/cart.action";
 
 function Header() {
   const navigate = useNavigate();
@@ -26,8 +27,29 @@ function Header() {
   const isCartOpen = useSelector(selectIsCartOpen);
   const currentUser = useSelector(selectCurrentUser);
 
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const cartIconRef = useRef<HTMLImageElement>(null);
+
   useEffect(() => {
     dispatch(checkCurrentUserSession());
+  }, [dispatch]);
+
+  useEffect(() => {
+    function checkClickArea(event: MouseEvent) {
+      if (
+        dropdownRef &&
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node) &&
+        cartIconRef &&
+        cartIconRef.current &&
+        !cartIconRef.current.contains(event.target as Node)
+      ) {
+        dispatch(toggleCartIsOpen(false));
+      }
+    }
+
+    window.addEventListener("mousedown", checkClickArea);
+    return () => window.removeEventListener("mousedown", checkClickArea);
   }, [dispatch]);
 
   const goToPage = (page: string) => navigate(page);
@@ -69,9 +91,9 @@ function Header() {
             Sign In
           </HeaderContainerElement>
         )}
-        <CartIcon />
+        <CartIcon ref={cartIconRef} />
       </HeaderContainerSide>
-      {isCartOpen && <CartDropdown />}
+      {isCartOpen && <CartDropdown ref={dropdownRef} />}
     </HeaderContainer>
   );
 }

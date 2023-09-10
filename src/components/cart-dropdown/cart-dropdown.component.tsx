@@ -10,8 +10,12 @@ import {
 } from "../../redux/selectors/cart.selector";
 import { CartItemType } from "../cart-item/cart-item.component";
 import DropdownItem from "../dropdown-item/dropdown-item.component";
+import { ForwardedRef, PropsWithChildren, forwardRef } from "react";
 
-function CartDropdown() {
+function CartDropdown(
+  _props: PropsWithChildren<{}>,
+  ref: ForwardedRef<HTMLDivElement>
+) {
   const cart = useSelector(selectCartItems);
   const itemsCount = useSelector(selectCartItemsCount);
   const navigate = useNavigate();
@@ -19,7 +23,7 @@ function CartDropdown() {
   const goToCheckout = () => navigate("/checkout");
 
   return (
-    <CartDropdownContainer>
+    <CartDropdownContainer ref={ref}>
       {itemsCount ? (
         cart.map((cartItem: CartItemType) => (
           <DropdownItem key={cartItem.id} cartItem={cartItem} />
@@ -38,4 +42,4 @@ function CartDropdown() {
   );
 }
 
-export default CartDropdown;
+export default forwardRef(CartDropdown);

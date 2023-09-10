@@ -6,9 +6,12 @@ import {
 } from "../../redux/selectors/cart.selector";
 import { toggleCartIsOpen } from "../../redux/actions/cart/cart.action";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { ForwardedRef, PropsWithChildren, forwardRef, useEffect } from "react";
 
-function CartIcon() {
+function CartIcon(
+  _props: PropsWithChildren<{}>,
+  ref: ForwardedRef<HTMLImageElement>
+) {
   const isCartOpen = useSelector(selectIsCartOpen);
   const itemsCount = useSelector(selectCartItemsCount);
 
@@ -21,11 +24,15 @@ function CartIcon() {
   const toggleIsCartOpen = () => dispatch(toggleCartIsOpen(!isCartOpen));
 
   return (
-    <CartIconContainer title="cart-icon-container" onClick={toggleIsCartOpen}>
+    <CartIconContainer
+      title="cart-icon-container"
+      ref={ref}
+      onClick={toggleIsCartOpen}
+    >
       <ShoppingIcon title="shopping-bag" />
       <ItemCount>{itemsCount}</ItemCount>
     </CartIconContainer>
   );
 }
 
-export default CartIcon;
+export default forwardRef(CartIcon);
