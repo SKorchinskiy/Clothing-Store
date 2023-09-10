@@ -3,7 +3,7 @@
 exports[`<ProductItem /> component should render UI elements properly 1`] = `
 <DocumentFragment>
   <div
-    class="sc-grXZZQ keMhTj"
+    class="sc-grXZZQ jjwuhe"
   >
     <img
       alt="test product name"
