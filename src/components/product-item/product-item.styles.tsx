@@ -13,6 +13,8 @@ export const ProductItemContainer = styled.div`
   align-items: center;
   font-family: "Amatic SC";
   font-size: 24px;
+  margin: auto;
+  width: 200px;
 
   img {
     width: 100%;

@@ -6,7 +6,7 @@ exports[`<CategoryList /> component should render provided <Category> components
     class="sc-bcPKhP cSdPoW"
   >
     <div
-      class="sc-hLclGa Neols"
+      class="sc-hLclGa dfjZmB"
     >
       <div
         class="sc-dkjKgF hYJjlH"
@@ -23,7 +23,7 @@ exports[`<CategoryList /> component should render provided <Category> components
       </div>
     </div>
     <div
-      class="sc-hLclGa Neols"
+      class="sc-hLclGa dfjZmB"
     >
       <div
         class="sc-dkjKgF zmKuE"
@@ -40,7 +40,7 @@ exports[`<CategoryList /> component should render provided <Category> components
       </div>
     </div>
     <div
-      class="sc-hLclGa Neols"
+      class="sc-hLclGa dfjZmB"
     >
       <div
         class="sc-dkjKgF ZSDMN"

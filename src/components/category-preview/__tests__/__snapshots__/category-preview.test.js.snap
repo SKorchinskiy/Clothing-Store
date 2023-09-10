@@ -11,10 +11,10 @@ exports[`<CategoryPreview /> component should render initial UI properly 1`] = `
       </span>
     </h2>
     <div
-      class="sc-bcPKhP jhARyy"
+      class="sc-bcPKhP kfhgEs"
     >
       <div
-        class="sc-hLclGa bXBury"
+        class="sc-hLclGa hsFNf"
       >
         <img
           alt="category/1/item/name/1"
@@ -38,7 +38,7 @@ exports[`<CategoryPreview /> component should render initial UI properly 1`] = `
         </button>
       </div>
       <div
-        class="sc-hLclGa bXBury"
+        class="sc-hLclGa hsFNf"
       >
         <img
           alt="category/1/item/name/2"
@@ -62,7 +62,7 @@ exports[`<CategoryPreview /> component should render initial UI properly 1`] = `
         </button>
       </div>
       <div
-        class="sc-hLclGa bXBury"
+        class="sc-hLclGa hsFNf"
       >
         <img
           alt="category/1/item/name/3"

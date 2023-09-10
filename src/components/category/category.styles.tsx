@@ -71,4 +71,16 @@ export const CategoryContainer = styled.div`
   &:last-child {
     margin-left: 7.5px;
   }
+
+  @media screen and (min-height: 800px) {
+    height: 400px;
+  }
+
+  @media screen and (min-height: 1000px) {
+    height: 500px;
+  }
+
+  @media screen and (min-height: 1200px) {
+    height: 600px;
+  }
 `;
