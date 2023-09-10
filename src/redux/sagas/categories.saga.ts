@@ -22,7 +22,7 @@ function* fetchCategoriesWatcher(): SagaIterator {
 
 function* fetchCategories(): SagaIterator {
   try {
-    const categories = yield call(getAllCategoriesProducts, 5);
+    const categories = yield call(getAllCategoriesProducts, 10);
     yield put(fetchCategoriesSuccess(categories));
   } catch (error) {
     yield put(fetchCategoriesFailed(error as Error));
