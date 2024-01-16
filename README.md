@@ -2,17 +2,17 @@
 
 ## Table of Contents
 
-+ [Project Description](https://github.com/SKorchinskiy/Clothing-Store#project-description)
++ [Project Description](https://github.com/SKorchinskiy/Clothing-Store?tab=readme-ov-file#project-description)
 
-+ [Project Structure](https://github.com/SKorchinskiy/Clothing-Store#project-structure) 
++ [Project Structure](https://github.com/SKorchinskiy/Clothing-Store?tab=readme-ov-file#project-structure) 
 
-+ [Project Workflow](https://github.com/SKorchinskiy/Clothing-Store#project-workflow)
++ [Project Workflow](https://github.com/SKorchinskiy/Clothing-Store?tab=readme-ov-file#project-workflow)
 
-+ [Project Optimizations](https://github.com/SKorchinskiy/Clothing-Store#project-optimizations)
++ [Project Optimizations](https://github.com/SKorchinskiy/Clothing-Store?tab=readme-ov-file#project-optimizations)
 
-+ [Why did I build this project ?](https://github.com/SKorchinskiy/Clothing-Store#why-did-i-build-this-project-)
++ [Why did I build this project ?](https://github.com/SKorchinskiy/Clothing-Store?tab=readme-ov-file#why-did-i-build-this-project-)
 
-+ [What did I learn ?](https://github.com/SKorchinskiy/Clothing-Store#what-did-i-learn-)
++ [What did I learn ?](https://github.com/SKorchinskiy/Clothing-Store?tab=readme-ov-file#what-did-i-learn-)
 
 ## Project Description
 
