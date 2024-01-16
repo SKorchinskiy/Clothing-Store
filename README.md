@@ -314,7 +314,14 @@ const Shop = lazy(() => import("../pages/shop/shop.page"));
 const Checkout = lazy(() => import("../pages/checkout/checkout.page"));
 const Category = lazy(() => import("../pages/category/category.page"));
 ```
+Also, during page loading the loader is shown
+
+![Loader Screenshot](https://drive.google.com/uc?id=1UMimf5oBYtximrzGJG86INxBhJUxYIgb)
 
 ## Why did I build this project ?
 
+I built Clothing Store project to improve my skills in web development. This application is the first relatively big application where I've gained lots of skills and knowledge. In the next section I've listed what I've learned during the project building process.
+
 ## What did I learn ?
++ **Technologies**: React, Redux, Redux-Saga, React-Router-Dom, Jest, Testing Library, Cloud Firestore, HTML, CSS
++ **Strategies and Concepts**: lazy loading, serverless functions, page routing, device resolution adaptation, progressive web applications, web vitals optimization, client side rendering, partial rendering, loaders, service workers
