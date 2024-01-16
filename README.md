@@ -2,17 +2,17 @@
 
 ## Table of Contents
 
-+ [Project Description](https://github.com/SKorchinskiy/Clothing-Store/edit/main/README.md#project-description)
++ [Project Description](https://github.com/SKorchinskiy/Clothing-Store/main/README.md#project-description)
 
-+ [Project Structure](https://github.com/SKorchinskiy/Clothing-Store/edit/main/README.md#project-structure) 
++ [Project Structure](https://github.com/SKorchinskiy/Clothing-Store#project-structure) 
 
-+ [Project Workflow](https://github.com/SKorchinskiy/Clothing-Store/edit/main/README.md#project-workflow)
++ [Project Workflow](https://github.com/SKorchinskiy/Clothing-Store#project-workflow)
 
-+ [Project Optimizations](https://github.com/SKorchinskiy/Clothing-Store/edit/main/README.md#project-optimizations)
++ [Project Optimizations](https://github.com/SKorchinskiy/Clothing-Store#project-optimizations)
 
-+ [Why did I build this project ?](why-did-i-build-this-project-?)
++ [Why did I build this project ?](https://github.com/SKorchinskiy/Clothing-Store#why-did-i-build-this-project-)
 
-+ [What did I learn ?](why-did-i-learn-?)
++ [What did I learn ?](https://github.com/SKorchinskiy/Clothing-Store#what-did-i-learn-)
 
 ## Project Description
 
@@ -275,6 +275,45 @@ The project is deployed using Netlify. You can check it [here](https://curious-w
 ![Checkout Page Screeshot](https://drive.google.com/uc?id=1MttHy7EM0wN4Bxf0QCfp-0dc924CzFDQ)
 
 ## Project Optimizations
+
++ Web vitals
+
+Here are measurements made with PageSpeed Insights. You can check detailed results [here](https://pagespeed.web.dev/analysis/https-curious-wisp-0e847c-netlify-app/r4iv81jok6?form_factor=desktop).
+
+![PC Performance Screenshot](https://drive.google.com/uc?id=1LlM32TdVDjZQh6sKC1Fdif3V9Jd5QkKK)
+
+![Mobile Performance Screenshots](https://drive.google.com/uc?id=1e5vdudCXKT25-0NOIfZWI-ltM09gSOgi)
+
+> [!TIP]
+> As you can see, efficiency isn't great for mobile version. It can be impoved by:
+>  + storing images of different sizes in the data storage. This way the amount of data transfered via network is less
+>  + using server side rendering. By using this strategy, the server is responsible for rendering, not client's device
+>  + using CDN + Redis. It can significantly improve performance as product images are the same for each user, so the caching will be efficient
+
++ Different screen resolutions
+
+You've previously seen screenshots of the applications made from laptop. Now, I want to demonstrate how the app looks from mobile. 
+> [!NOTE]
+> The application is created as a progressive web app, so it can be added on the main screen of your device
+
+![Mobile Application Layout Home Page](https://drive.google.com/uc?id=19Pz4HE-fYatwtf3EID8r6q5BGBWuGuqY)
+![Mobile Application Layout Shop Page](https://drive.google.com/uc?id=1yB9Zdc_mrZbm82l6mnhxam-Z4ta-6b-c)
+![Mobile Application Layout Auth Page](https://drive.google.com/uc?id=1dLS4Ab0Nt8MTAq7zc-Rj3X2hGb9ImZ0t)
+![Mobile Application Layout Product Cart](https://drive.google.com/uc?id=12N6X5sgyT-t3wetS7bS2oB364zsqY0Zi)
+![Mobile Application Layout Checkout Page](https://drive.google.com/uc?id=1X-Y5DM9qK8W2sDX3siP336x_XLkaEJoI)
+
++ Partial Rendering
+
+Each page is loaded using lazy loading strategy. The main idea is that the content is loaded not simultaneously from the begining, but by chunks. So the needed page is loaded only when it is needed. More about lazy loading you can read [here](https://en.wikipedia.org/wiki/Lazy_loading).
+
+Code from the application given below. You can check it out [here](https://github.com/SKorchinskiy/Clothing-Store/blob/main/src/routes/index.js).
+```
+const Home = lazy(() => import("../pages/home/home.page"));
+const Auth = lazy(() => import("../pages/auth/auth.page"));
+const Shop = lazy(() => import("../pages/shop/shop.page"));
+const Checkout = lazy(() => import("../pages/checkout/checkout.page"));
+const Category = lazy(() => import("../pages/category/category.page"));
+```
 
 ## Why did I build this project ?
 
