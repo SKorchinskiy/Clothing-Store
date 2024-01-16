@@ -2,7 +2,7 @@
 
 ## Table of Contents
 
-+ [Project Description](https://github.com/SKorchinskiy/Clothing-Store/main/README.md#project-description)
++ [Project Description](https://github.com/SKorchinskiy/Clothing-Store#project-description)
 
 + [Project Structure](https://github.com/SKorchinskiy/Clothing-Store#project-structure) 
 
