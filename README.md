@@ -260,15 +260,15 @@ The project is deployed using Netlify. You can check it [here](https://curious-w
 
 - **Specific Category Page**: By clicking on a category on the main page, you'll be redirected to the chosen category page. You can checkout this page [here](https://curious-wisp-0e847c.netlify.app/category/Mens).
 
-![Mens Category Screenshot](https://drive.google.com/uc?id=1KJLujs-Zci0nhXabej8e7eEsXQtwt8_B)
+![Mens Category Screenshot](https://drive.google.com/uc?id=1C8QkkWXHuf0p6qpXXl4np5U9l2Le5v1T)
 
 - **Product Cart**: After hovering on the desired product, you can add it to the cart, which contains all the chosen products in specific amount. (It's located in the upper right corner)
 
-![Product Cart Screenshot](https://drive.google.com/uc?id=1I_nX0W8sAu7pBSkSaEw7MrxLHQhz6PG1)
+![Product Cart Screenshot](https://drive.google.com/uc?id=1IOlKhXoH1nevAWsylSGAnlsMVJHH6jxT)
 
 - **Shop Page**: On the shop page limited amount of each category products is gathered. You can checkout this page [here](https://curious-wisp-0e847c.netlify.app/shop)
 
-![Shop Page Screentshot](https://drive.google.com/uc?id=1w4ja1cEV2F5KPUD7MVs0zGAS6Q6APFM5)
+![Shop Page Screentshot](https://drive.google.com/uc?id=16QvrrPQVVgBTxakuQ_iMOHBTyJdFOsSp)
 
 - **Checkout Page**: Through the cart you can get to the checkout page, where chosen products are listed. You can checkout this page [here](https://curious-wisp-0e847c.netlify.app/checkout)
 
